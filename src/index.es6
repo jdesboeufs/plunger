@@ -6,7 +6,7 @@ import deepGet from 'lodash/object/get';
 import strRightBack from 'underscore.string/strRightBack';
 import { parse as parseContentDisposition } from 'content-disposition';
 
-let getExtension = fileName => {
+const getExtension = fileName => {
     if (fileName && fileName.includes('.')) {
         return strRightBack(fileName, '.');
     } else {
@@ -14,9 +14,19 @@ let getExtension = fileName => {
     }
 };
 
-let BINARY_CONTENT_TYPES = [
+const BINARY_CONTENT_TYPES = [
     'application/octet-stream',
     'application/binary'
+];
+
+const ARCHIVE_EXTENSIONS = [
+    'zip',
+    'tar',
+    'rar',
+    'gz',
+    'bz2',
+    '7z',
+    'xz'
 ];
 
 export default class Plunger {
@@ -86,16 +96,27 @@ export default class Plunger {
         return deepGet(this, 'contentDisposition.parameters.filename') || this.location.filename(true);
     }
 
+    get fileTypeExtension() {
+        return deepGet(this, 'fileType.ext');
+    }
+
     get fileExtension() {
         let attachmentExt = getExtension(deepGet(this, 'contentDisposition.parameters.filename'));
         let urlExt = getExtension(this.location.filename(true));
-        let fileTypeExt = deepGet(this, 'fileType.ext');
-        return attachmentExt || urlExt || fileTypeExt;
+        return attachmentExt || urlExt || this.fileTypeExtension;
     }
 
     get binary() {
         let contentType = this.headers['content-type'];
         if (contentType && BINARY_CONTENT_TYPES.includes(contentType)) return true;
+    }
+
+    get archive() {
+        if (ARCHIVE_EXTENSIONS.includes(this.fileTypeExtension)) {
+            return this.fileTypeExtension;
+        } else {
+            return false;
+        }
     }
 
     pipeWithResponse(destination) {
@@ -108,7 +129,7 @@ export default class Plunger {
     }
 
     toObject() {
-        return pick(this, 'statusCode', 'headers', 'fileType', 'contentDisposition', 'fileName', 'fileExtension', 'binary');
+        return pick(this, 'statusCode', 'headers', 'fileType', 'contentDisposition', 'fileName', 'fileExtension', 'binary', 'archive');
     }
 
     // computeOptions(options) {
