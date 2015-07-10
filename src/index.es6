@@ -7,9 +7,12 @@ import strRightBack from 'underscore.string/strRightBack';
 import { parse as parseContentDisposition } from 'content-disposition';
 
 let getExtension = fileName => {
-    if (!fileName || !fileName.includes('.')) return;
-    return strRightBack(fileName, '.');
-}
+    if (fileName && fileName.includes('.')) {
+        return strRightBack(fileName, '.');
+    } else {
+        return undefined;
+    }
+};
 
 let BINARY_CONTENT_TYPES = [
     'application/octet-stream',
