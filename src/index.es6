@@ -6,6 +6,11 @@ import deepGet from 'lodash/object/get';
 import strRightBack from 'underscore.string/strRightBack';
 import { parse as parseContentDisposition } from 'content-disposition';
 
+let getExtension = fileName => {
+    if (!fileName || !fileName.includes('.')) return;
+    return strRightBack(fileName, '.');
+}
+
 let BINARY_CONTENT_TYPES = [
     'application/octet-stream',
     'application/binary'
@@ -79,12 +84,10 @@ export default class Plunger {
     }
 
     get fileExtension() {
-        let attachmentFileName = deepGet(this, 'contentDisposition.parameters.filename');
-        let attachmentFileExtension = attachmentFileName ? strRightBack(attachmentFileName, '.') : undefined;
-        let uriFileName = this.location.filename(true);
-        let uriFileExtension = uriFileName !== '/' ? strRightBack(uriFileName, '.') : undefined;
-        let fileTypeExtension = deepGet(this, 'fileType.ext');
-        return attachmentFileExtension || uriFileExtension || fileTypeExtension;
+        let attachmentExt = getExtension(deepGet(this, 'contentDisposition.parameters.filename'));
+        let urlExt = getExtension(this.location.filename(true));
+        let fileTypeExt = deepGet(this, 'fileType.ext');
+        return attachmentExt || urlExt || fileTypeExt;
     }
 
     get binary() {
