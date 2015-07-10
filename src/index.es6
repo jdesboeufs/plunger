@@ -6,6 +6,11 @@ import deepGet from 'lodash/object/get';
 import strRightBack from 'underscore.string/strRightBack';
 import { parse as parseContentDisposition } from 'content-disposition';
 
+let BINARY_CONTENT_TYPES = [
+    'application/octet-stream',
+    'application/binary'
+];
+
 export default class Plunger {
 
     constructor(location, options = {}) {
@@ -82,6 +87,11 @@ export default class Plunger {
         return attachmentFileExtension || uriFileExtension || fileTypeExtension;
     }
 
+    get binary() {
+        let contentType = this.headers['content-type'];
+        if (contentType && BINARY_CONTENT_TYPES.includes(contentType)) return true;
+    }
+
     pipeWithResponse(destination) {
         this.destination = destination;
         this.response.pipe(destination);
@@ -92,7 +102,7 @@ export default class Plunger {
     }
 
     toObject() {
-        return pick(this, 'statusCode', 'headers', 'fileType', 'contentDisposition', 'fileName', 'fileExtension');
+        return pick(this, 'statusCode', 'headers', 'fileType', 'contentDisposition', 'fileName', 'fileExtension', 'binary');
     }
 
     // computeOptions(options) {
