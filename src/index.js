@@ -1,4 +1,4 @@
-import request from 'superagent';
+import request from 'request';
 import fileType from 'file-type';
 import URI from'URIjs';
 import pick from 'lodash/object/pick';
@@ -45,8 +45,6 @@ export default class Plunger {
         return new Promise((resolve, reject) => {
             this.req = request
                 .get(this.rawLocation)
-                .buffer(false)
-                .end()
                 .on('error', reject)
                 .on('response', response => {
                     this.response = response;
