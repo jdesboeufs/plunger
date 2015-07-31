@@ -77,9 +77,9 @@ export default class Plunger {
         });
     }
 
-    closeConnection() {
-        if (this.options.abort === 'always') {
-            this.req.abort();
+    closeConnection(force = false) {
+        if (this.options.abort === 'always' || force) {
+            this.response.destroy();
         }
         return this;
     }
