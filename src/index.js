@@ -80,6 +80,7 @@ export default class Plunger {
     closeConnection(force = false) {
         if (this.options.abort === 'always' || force) {
             this.response.destroy();
+            this.firstChunk = undefined;
         }
         return this;
     }
@@ -123,7 +124,6 @@ export default class Plunger {
         this.response.pipe(destination);
         destination.write(this.firstChunk);
         this.response.resume();
-        this.firstChunk = undefined;
         return destination;
     }
 
