@@ -1,6 +1,6 @@
 import request from 'request';
 import fileType from 'file-type';
-import URI from'URIjs';
+import URI from'urijs';
 import Promise from 'bluebird';
 import pick from 'lodash/object/pick';
 import deepGet from 'lodash/object/get';
