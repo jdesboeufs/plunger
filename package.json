@@ -1,6 +1,6 @@
 {
   "name": "plunger",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Inspector and conditional downloader for HTTP remote resources",
   "main": "index.js",
   "dependencies": {
