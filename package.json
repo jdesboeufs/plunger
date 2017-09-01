@@ -1,47 +1,45 @@
 {
   "name": "plunger",
-  "version": "0.1.3",
-  "description": "Inspector and conditional downloader for HTTP remote resources",
+  "version": "0.2.0-dev",
+  "description": "Powerful link-to-dataset inspector ",
   "main": "index.js",
+  "repository": "git@github.com:inspireteam/plunger.git",
+  "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "xo"
+  },
+  "bin": {
+    "plunge": "bin/cli.js"
+  },
   "dependencies": {
-    "urijs": "^1.16.1",
-    "bluebird": "^2.9.34",
-    "content-disposition": "^0.5.0",
-    "file-type": "^2.7.0",
-    "lodash": "^3.10.0",
-    "request": "^2.59.0",
-    "underscore.string": "^3.1.1"
+    "commander": "^2.11.0",
+    "content-disposition": "^0.5.2",
+    "content-type": "^1.0.2",
+    "debug": "^3.0.1",
+    "execa": "^0.8.0",
+    "file-type": "^6.1.0",
+    "get-stream": "^3.0.0",
+    "hasha": "^3.0.0",
+    "lodash": "^4.17.4",
+    "mime-types": "^2.1.16",
+    "mississippi": "^1.3.0",
+    "rimraf": "^2.6.1",
+    "type-is": "^1.6.15",
+    "update-notifier": "^2.2.0"
   },
   "devDependencies": {
-    "babel": "^5.6.14",
-    "babel-eslint": "^4.0.5",
-    "eslint": "^0.24.0"
+    "xo": "^0.18.2"
   },
-  "files": [
-    "lib",
-    "index.js",
-    "README.md",
-    "CHANGELOG.md"
-  ],
-  "scripts": {
-    "compile": "babel src --out-dir lib",
-    "prepublish": "npm run compile",
-    "lint": "eslint src/** index.js",
-    "test": "npm run lint"
+  "xo": {
+    "semicolon": false,
+    "space": 2,
+    "rules": {
+      "curly": "off",
+      "capitalized-comments": "off"
+    }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jdesboeufs/plunger.git"
-  },
-  "keywords": [
-    "downloader",
-    "inspector",
-    "http"
-  ],
-  "author": "Jérôme Desboeufs <jerome.desboeufs@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jdesboeufs/plunger/issues"
-  },
-  "homepage": "https://github.com/jdesboeufs/plunger#readme"
+  "engines": {
+    "node": ">= 8.0"
+  }
 }
