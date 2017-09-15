@@ -14,8 +14,9 @@ updateNotifier({pkg}).notify()
 program
   .version(pkg.version)
   .arguments('<url>')
+  .option('-t, --tree', 'display tree')
   .action(url => {
-    analyze(url, {lastCheckedAt: null})
+    analyze(url, {returnTree: program.tree})
       .then(result => console.log(inspect(omit(result, 'body'), {colors: true, depth: 10})))
       .catch(err => {
         console.error(err)
