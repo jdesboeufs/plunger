@@ -2,11 +2,10 @@
 
 const {inspect} = require('util')
 
-const {omit} = require('lodash')
 const program = require('commander')
 const updateNotifier = require('update-notifier')
 
-const analyze = require('../')
+const {analyze, extractFiles} = require('../')
 const pkg = require('../package.json')
 
 updateNotifier({pkg}).notify()
@@ -15,12 +14,18 @@ program
   .version(pkg.version)
   .arguments('<url>')
   .option('-t, --tree', 'display tree')
-  .action(url => {
-    analyze(url, {returnTree: program.tree})
-      .then(result => console.log(inspect(omit(result, 'body'), {colors: true, depth: 10})))
-      .catch(err => {
-        console.error(err)
-      })
+  .action(async url => {
+    const tree = await analyze(url)
+
+    if (program.tree) {
+      console.log(
+        inspect(tree, {colors: true, depth: 10})
+      )
+    } else {
+      console.log(
+        inspect(extractFiles(tree), {colors: true, depth: 10})
+      )
+    }
   })
 
 program.parse(process.argv)
