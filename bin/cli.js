@@ -14,8 +14,11 @@ program
   .version(pkg.version)
   .arguments('<url>')
   .option('-t, --tree', 'display tree')
+  .option('--no-archives', 'ignore archives')
   .action(async url => {
-    const tree = await analyze(url)
+    const tree = await analyze(url, {
+      extractArchives: program.archives
+    })
 
     if (program.tree) {
       console.log(
