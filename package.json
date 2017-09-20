@@ -11,7 +11,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "xo",
-    "test": "npm run lint"
+    "test": "ava",
+    "test:ci": "yarn lint && yarn test"
   },
   "bin": {
     "plunge": "bin/cli.js"
@@ -36,10 +37,16 @@
     "update-notifier": "^2.2.0"
   },
   "devDependencies": {
+    "ava": "^0.22.0",
     "xo": "^0.19.0"
   },
   "engines": {
     "node": ">=8.x"
+  },
+  "ava": {
+    "files": [
+      "lib/**/*.test.js"
+    ]
   },
   "xo": {
     "semicolon": false,
