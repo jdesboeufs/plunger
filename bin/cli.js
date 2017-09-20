@@ -14,10 +14,12 @@ program
   .version(pkg.version)
   .arguments('<url>')
   .option('-t, --tree', 'display tree')
+  .option('-e, --etag [value]', 'pass an etag')
   .option('--no-archives', 'ignore archives')
   .action(async url => {
     const tree = await analyze(url, {
-      extractArchives: program.archives
+      extractArchives: program.archives,
+      etag: program.etag
     })
 
     if (program.tree) {
