@@ -24,6 +24,7 @@
     "content-type": "^1.0.2",
     "debug": "^3.0.1",
     "execa": "^0.8.0",
+    "feedparser": "^2.2.1",
     "file-type": "^6.1.0",
     "get-stream": "^3.0.0",
     "hasha": "^3.0.0",
