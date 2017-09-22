@@ -38,7 +38,7 @@ program
       )
 
       if (program.cleanup) {
-        await Promise.all(extract.temporary.map(t => rimrafAsync(t.temporary)))
+        await Promise.all(extract.temporary.map(t => rimrafAsync(t)))
       }
     }
   })
