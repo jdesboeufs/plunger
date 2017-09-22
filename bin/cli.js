@@ -6,7 +6,7 @@ const program = require('commander')
 const updateNotifier = require('update-notifier')
 const rimraf = require('rimraf')
 
-const {analyze, extractFiles} = require('../')
+const {analyzeLocation, extractFiles} = require('../')
 const pkg = require('../package.json')
 
 const rimrafAsync = promisify(rimraf)
@@ -21,7 +21,7 @@ program
   .option('--no-archives', 'ignore archives')
   .option('--no-cleanup', 'do not cleanup temporary files')
   .action(async url => {
-    const tree = await analyze(url, {
+    const tree = await analyzeLocation(url, {
       extractArchives: program.archives,
       etag: program.etag
     })
