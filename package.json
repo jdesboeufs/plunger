@@ -11,8 +11,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "xo",
-    "test": "nyc ava",
-    "test:ci": "yarn lint && yarn test"
+    "test": "nyc ava"
   },
   "bin": {
     "plunge": "bin/cli.js"
