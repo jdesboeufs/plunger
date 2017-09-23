@@ -1,10 +1,7 @@
 const path = require('path')
-const {promisify} = require('util')
 const test = require('ava')
-const rimraf = require('rimraf')
-const analyzePath = require('..')
-
-const rm = promisify(rimraf)
+const analyzePath = require('../../lib/path')
+const rm = require('../__helpers__/rm')
 
 const options = {
   digestAlgorithm: 'md5',
@@ -28,14 +25,14 @@ test('should not update token if already analyzed', async t => {
 
 test('should throw if the file is not found', async t => {
   const token = {
-    path: path.resolve(__dirname, 'fixtures/not-found.txt')
+    path: path.resolve(__dirname, '../__fixtures__/not-found.txt')
   }
 
   await t.throws(analyzePath(token, options), /ENOENT: no such file or directory/)
 })
 
 test('should analyze a text file completely', async t => {
-  const filePath = path.resolve(__dirname, 'fixtures/file.txt')
+  const filePath = path.resolve(__dirname, '../__fixtures__/file.txt')
 
   const token = {
     path: filePath
@@ -59,7 +56,7 @@ test('should analyze a text file completely', async t => {
 })
 
 test('should analyze a directory completely', async t => {
-  const filePath = path.resolve(__dirname, 'fixtures/directory')
+  const filePath = path.resolve(__dirname, '../__fixtures__/directory')
 
   const token = {
     path: filePath
@@ -87,7 +84,7 @@ test('should analyze a directory completely', async t => {
 })
 
 test('should analyze an archive completely', async t => {
-  const filePath = path.resolve(__dirname, 'fixtures/file.zip')
+  const filePath = path.resolve(__dirname, '../__fixtures__/file.zip')
 
   const token = {
     path: filePath
@@ -129,7 +126,7 @@ test('should analyze an archive completely', async t => {
 
 test('should error on unknown file types (symlink)', async t => {
   const token = {
-    path: path.resolve(__dirname, 'fixtures/link.txt')
+    path: path.resolve(__dirname, '../__fixtures__/link.txt')
   }
 
   await t.throws(analyzePath(token, options, 'Unsupported file type'))
@@ -137,7 +134,7 @@ test('should error on unknown file types (symlink)', async t => {
 
 test('should remove the stats from the token on error', async t => {
   const token = {
-    path: path.resolve(__dirname, 'fixtures/link.txt')
+    path: path.resolve(__dirname, '../__fixtures__/link.txt')
   }
 
   await t.throws(analyzePath(token, options, 'Unsupported file type'))

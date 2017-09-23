@@ -1,6 +1,6 @@
 const path = require('path')
 const test = require('ava')
-const analyzeDirectory = require('../../analyzers/directory')
+const analyzeDirectory = require('../../../lib/path/analyzers/directory')
 
 test('should not update token if already analyzed', async t => {
   const token = {
@@ -16,7 +16,7 @@ test('should not update token if already analyzed', async t => {
 
 test('should return a child for each item in the directory', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/directory')
+    path: path.resolve(__dirname, '../../__fixtures__/directory')
   }
 
   await analyzeDirectory(token)
@@ -37,7 +37,7 @@ test('should return a child for each item in the directory', async t => {
 
 test('should set the token type to directory', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/directory')
+    path: path.resolve(__dirname, '../../__fixtures__/directory')
   }
 
   await analyzeDirectory(token)
@@ -47,7 +47,7 @@ test('should set the token type to directory', async t => {
 
 test('should set the token as analyzed', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/directory')
+    path: path.resolve(__dirname, '../../__fixtures__/directory')
   }
 
   await analyzeDirectory(token)

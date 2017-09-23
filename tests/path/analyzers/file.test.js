@@ -1,6 +1,6 @@
 const path = require('path')
 const test = require('ava')
-const analyzeFile = require('../../analyzers/file')
+const analyzeFile = require('../../../lib/path/analyzers/file')
 
 const options = {
   digestAlgorithm: 'sha384'
@@ -20,7 +20,7 @@ test('should not update token if already analyzed', async t => {
 
 test('should compute the digest', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/file.txt')
+    path: path.resolve(__dirname, '../../__fixtures__/file.txt')
   }
 
   await analyzeFile(token, options)
@@ -30,7 +30,7 @@ test('should compute the digest', async t => {
 
 test('should compute with the specified algorithm', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/file.txt')
+    path: path.resolve(__dirname, '../../__fixtures__/file.txt')
   }
 
   await analyzeFile(token, {

@@ -1,5 +1,5 @@
 const test = require('ava')
-const analyzeTypes = require('../../analyzers/types')
+const analyzeAtom = require('../../../lib/url/analyzers/atom')
 
 test('should not update token if already analyzed', async t => {
   const token = {
@@ -7,7 +7,7 @@ test('should not update token if already analyzed', async t => {
   }
   const save = Object.assign({}, token)
 
-  const ret = await analyzeTypes(token)
+  const ret = await analyzeAtom(token)
 
   t.is(ret, false)
   t.deepEqual(token, save)

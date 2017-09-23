@@ -1,6 +1,6 @@
 const path = require('path')
 const test = require('ava')
-const analyzeTypes = require('../../analyzers/types')
+const analyzeTypes = require('../../../lib/path/analyzers/types')
 
 test('should not update token if already analyzed', async t => {
   const token = {
@@ -16,7 +16,7 @@ test('should not update token if already analyzed', async t => {
 
 test('should not return any type when none detectable', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/empty')
+    path: path.resolve(__dirname, '../../__fixtures__/empty')
   }
 
   await analyzeTypes(token)
@@ -26,7 +26,7 @@ test('should not return any type when none detectable', async t => {
 
 test('should error when the file is not found', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/notfound')
+    path: path.resolve(__dirname, '../../__fixtures__/notfound')
   }
 
   await t.throws(analyzeTypes(token), /ENOENT: no such file or directory/)
@@ -34,7 +34,7 @@ test('should error when the file is not found', async t => {
 
 test('should use the fileName extension to add a fileType', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/empty'),
+    path: path.resolve(__dirname, '../../__fixtures__/empty'),
     fileName: 'file.txt'
   }
 
@@ -49,7 +49,7 @@ test('should use the fileName extension to add a fileType', async t => {
 
 test('should not set a mime for unknown extensions', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/empty'),
+    path: path.resolve(__dirname, '../../__fixtures__/empty'),
     fileName: 'file.lol'
   }
 
@@ -64,7 +64,7 @@ test('should not set a mime for unknown extensions', async t => {
 
 test('should not add a fileType when there is no extension', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/empty'),
+    path: path.resolve(__dirname, '../../__fixtures__/empty'),
     fileName: 'file'
   }
 
@@ -75,7 +75,7 @@ test('should not add a fileType when there is no extension', async t => {
 
 test('should detect file type with the first chunk', async t => {
   const token = {
-    path: path.resolve(__dirname, '../fixtures/file.zip')
+    path: path.resolve(__dirname, '../../__fixtures__/file.zip')
   }
 
   await analyzeTypes(token)

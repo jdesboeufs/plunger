@@ -1,12 +1,8 @@
 const path = require('path')
-const {promisify} = require('util')
 const test = require('ava')
-const rimraf = require('rimraf')
-
-const analyzeArchive = require('../../analyzers/archive')
-const {createTempDirectory} = require('../../../util/tmpdir')
-
-const rm = promisify(rimraf)
+const analyzeArchive = require('../../../lib/path/analyzers/archive')
+const {createTempDirectory} = require('../../../lib/util/tmpdir')
+const rm = require('../../__helpers__/rm')
 
 const options = {
   logger: {
@@ -62,7 +58,7 @@ test('should not extract archives if not specified in the options', async t => {
 })
 
 test('should extract an archive and add a child with the extracted folder', async t => {
-  const filePath = path.resolve(__dirname, '../fixtures/file.zip')
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
 
   const token = {
     path: filePath,
@@ -96,7 +92,7 @@ test('should extract an archive and add a child with the extracted folder', asyn
 })
 
 test('should pass the filePath when specified', async t => {
-  const filePath = path.resolve(__dirname, '../fixtures/file.zip')
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
 
   const token = {
     path: filePath,
@@ -132,7 +128,7 @@ test('should pass the filePath when specified', async t => {
 })
 
 test('should use the fileName when filePath is not specified', async t => {
-  const filePath = path.resolve(__dirname, '../fixtures/file.zip')
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
 
   const token = {
     path: filePath,
@@ -168,7 +164,7 @@ test('should use the fileName when filePath is not specified', async t => {
 })
 
 test('should use the specified temporary path when available', async t => {
-  const filePath = path.resolve(__dirname, '../fixtures/file.zip')
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
   const tmp = await createTempDirectory()
 
   const token = {
