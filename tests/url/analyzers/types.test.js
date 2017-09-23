@@ -49,7 +49,7 @@ test('should not return an extension for unknown mime types', async t => {
   }])
 })
 
-test('should not return a type if the content type is not available', async t => {
+test('should not return a type if an error occurs', async t => {
   const token = {}
 
   await analyzeTypes(token)
