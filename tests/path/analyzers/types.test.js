@@ -86,3 +86,28 @@ test('should detect file type with the first chunk', async t => {
     source: 'path:chunk'
   }])
 })
+
+test('should preserve existing file types', async t => {
+  const initialType = {
+    ext: 'txt',
+    mime: 'text/plain',
+    source: 'test'
+  }
+
+  const token = {
+    path: path.resolve(__dirname, '../../__fixtures__/empty'),
+    fileName: 'file.csv',
+    fileTypes: [initialType]
+  }
+
+  await analyzeTypes(token)
+
+  t.deepEqual(token.fileTypes, [
+    initialType,
+    {
+      ext: 'csv',
+      mime: 'text/csv',
+      source: 'path:filename'
+    }
+  ])
+})
