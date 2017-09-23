@@ -183,7 +183,7 @@ test('should use the specified temporary path when available', async t => {
   return rm(tmp)
 })
 
-test('should mark invalid archives as analyzed and pass a warning message', async t => {
+test('should not mark invalid archives as analyzed and pass a warning message', async t => {
   const filePath = path.resolve(__dirname, '../../__fixtures__/invalid-archive.zip')
   const token = {
     path: filePath,
