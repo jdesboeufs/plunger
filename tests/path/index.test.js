@@ -124,6 +124,38 @@ test('should analyze an archive completely', async t => {
   return rm(tmp)
 })
 
+test('should analyze an invalid archive completely', async t => {
+  const filePath = path.resolve(__dirname, '../__fixtures__/invalid-archive.zip')
+
+  const token = {
+    path: filePath
+  }
+
+  await analyzePath(token, options)
+
+  const tmp = token.temporary
+
+  t.deepEqual(token, {
+    analyzed: true,
+    path: filePath,
+    digest: 'md5-oPAAyc9Y+DIU9H20eZGHqA==',
+    fileTypes: [
+      {
+        ext: 'zip',
+        mime: 'application/zip',
+        source: 'path:filename'
+      }
+    ],
+    temporary: tmp,
+    fileName: 'invalid-archive.zip',
+    fileSize: 23,
+    type: 'file',
+    warning: 'Could not extract archive'
+  })
+
+  return rm(tmp)
+})
+
 test('should error on unknown file types (symlink)', async t => {
   const token = {
     path: path.resolve(__dirname, '../__fixtures__/link.txt')
