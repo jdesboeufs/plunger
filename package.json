@@ -57,7 +57,8 @@
       "lib"
     ],
     "reporter": [
-      "lcov",
+      "html",
+      "json",
       "text-summary"
     ]
   },
