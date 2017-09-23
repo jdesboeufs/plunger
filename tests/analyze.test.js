@@ -100,3 +100,9 @@ test('should analyze a directory completely', async t => {
     analyzed: true
   })
 })
+
+test('should error if the inputType is not known', t => {
+  const token = {inputType: 'unknown'}
+
+  return t.throws(analyze(token, options), 'Token with inputType unknown was not analyzed')
+})
