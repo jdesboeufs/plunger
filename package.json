@@ -53,6 +53,9 @@
   },
   "nyc": {
     "all": true,
+    "include": [
+      "lib"
+    ],
     "reporter": [
       "lcov",
       "text-summary"
