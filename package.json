@@ -11,8 +11,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "xo",
-    "test": "nyc ava",
-    "codecov": "codecov"
+    "test": "nyc ava"
   },
   "bin": {
     "plunge": "bin/cli.js"
