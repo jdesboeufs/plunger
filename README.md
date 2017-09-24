@@ -1,6 +1,6 @@
 # plunger
 
-[![npm version](https://badge.fury.io/js/plunger.svg)](https://badge.fury.io/js/plunger)
+[![npm version](https://img.shields.io/npm/v/plunger.svg)](https://www.npmjs.com/package/plunger)
 [![Build Status](https://travis-ci.org/inspireteam/plunger.svg?branch=master)](https://travis-ci.org/inspireteam/plunger)
 [![codecov](https://codecov.io/gh/inspireteam/plunger/branch/master/graph/badge.svg)](https://codecov.io/gh/inspireteam/plunger)
 [![dependencies Status](https://david-dm.org/inspireteam/plunger/status.svg)](https://david-dm.org/inspireteam/plunger)
