@@ -1,7 +1,7 @@
 {
   "name": "plunger",
   "version": "0.2.0",
-  "description": "Powerful link-to-dataset inspector",
+  "description": "Powerful link analyzer",
   "main": "index.js",
   "repository": {
     "type": "git",
