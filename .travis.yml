@@ -1,5 +1,17 @@
 language: node_js
+
 node_js:
   - '8'
+
+addons:
+  apt:
+    packages:
+    - unar
+
 cache:
   yarn: true
+
+script:
+  - yarn lint
+  - yarn test
+  - node_modules/.bin/codecov -f coverage/coverage-final.json
