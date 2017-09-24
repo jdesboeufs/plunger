@@ -107,6 +107,7 @@ For example, analyzing `http://example.org/index.html` would yield something lik
 | etag            | `null`        | String  | Will be set to the `If-None-Match` HTTP header |
 | lastCheckedAt   | `null`        | Date    | Date of `location`’s previous check, will be set to the `If-Modified-Since` HTTP header |
 | userAgent       | plunger/1.0   | String  | User agent, will be set to the `User-Agent` HTTP header |
+| timeout         | `{connection: 0, download: 0}` | Object | `0` means no timeout, if the timeout is reached, the analyze will be interrupted
 | digestAlgorithm | sha384        | String  | Algorithm which file digests are computed with |
 | extractArchives | `true`        | Boolean | Disable to stop extracting archives |
 | indexOfMatches  | `[/Directory of/, /Index of/, /Listing of/]` | RegExp[] | Array of regexp to match index of-type pages |
