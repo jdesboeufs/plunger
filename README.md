@@ -183,7 +183,7 @@ For the same `http://example.org/index.html` resources, it would return the foll
         type: 'document' }
     ]
     ```
-  - `keepUnknownTypes` (defaults to `false`): control whether unspecified types should be left in the output.
+  - `keepUnknownTypes` (defaults to `true`) controls whether unspecified types should be left in the output.
 
 The `related` extensions of a type will be linked to the matching extension type as dependants and the `type` will be updated.
 
