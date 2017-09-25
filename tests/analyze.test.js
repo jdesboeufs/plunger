@@ -1,14 +1,7 @@
 const path = require('path')
 const test = require('ava')
 const analyze = require('../lib/analyze')
-
-const options = {
-  logger: {
-    log: () => {}
-  },
-  extractArchives: true,
-  digestAlgorithm: 'sha384'
-}
+const {analyze: options} = require('../lib/options')
 
 test('should analyze a text file completely', async t => {
   const filePath = path.resolve(__dirname, '__fixtures__/file.txt')
