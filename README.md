@@ -107,7 +107,7 @@ For example, analyzing `http://example.org/index.html` would yield something lik
 | etag            | `null`        | String  | Will be set to the `If-None-Match` HTTP header |
 | lastCheckedAt   | `null`        | Date    | Date of `location`’s previous check, will be set to the `If-Modified-Since` HTTP header |
 | userAgent       | plunger/1.0   | String  | User agent, will be set to the `User-Agent` HTTP header |
-| timeout         | `{connection: 2000, download: 20000}` | Object | `0` means no timeout, if the timeout (in ms) is reached, the analyze will be interrupted |
+| timeout         | `{connection: 2000, activity: 4000, download: 0}` | Object | See timeouts section |
 | maxDownloadSize | 100 * 1024 * 1024 | Number | Max size, in bytes, before the download of a file is interrupted |
 | digestAlgorithm | sha384        | String  | Algorithm which file digests are computed with |
 | extractArchives | `true`        | Boolean | Disable to stop extracting archives |
@@ -116,7 +116,18 @@ For example, analyzing `http://example.org/index.html` would yield something lik
 
 It returns a `Promise` to the root tree node.
 
-Example usage:
+#### Timeouts
+
+There are 3 configurable timeouts:
+
+- `connection`: timeout before an HTTP/HTTPS connection can be established, defaults to `2000ms`.
+- `activity`: timeout between 2 data chunks received by the server, defaults to `4000ms`.
+- `download`: timeout for the whole file to be downloaded, defaults to `0` (disabled).
+
+All timeouts can be disabled by setting them to 0.
+
+
+#### Example usage:
 
 ```js
 const {analyzeLocation} = require('plunger')
@@ -200,7 +211,7 @@ It returns an Object with the following structure:
 }
 ```
 
-Example usage:
+#### Example usage:
 
 ```js
 const {extractFiles} = require('plunger')
