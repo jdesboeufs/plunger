@@ -54,6 +54,19 @@ test('should use finalURL filename when content disposition is not available', t
   t.is(token.fileName, 'foobar')
 })
 
+test('should decode filenames coming from URLs', t => {
+  const token = {
+    response: {
+      headers: {}
+    },
+    finalURL: 'http://localhost/foo%20bar'
+  }
+
+  analyzeName(token)
+
+  t.is(token.fileName, 'foo bar')
+})
+
 test('should not set a fileName when finalUrl does not include a file name', t => {
   const token = {
     response: {
