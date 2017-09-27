@@ -27,7 +27,7 @@
     "commander": "^2.11.0",
     "content-disposition": "^0.5.2",
     "content-type": "^1.0.2",
-    "debug": "^3.0.1",
+    "debug": "^3.1.0",
     "decompress-response": "^3.3.0",
     "execa": "^0.8.0",
     "feedparser": "^2.2.1",
