@@ -41,12 +41,12 @@ test('should decode rfc2047 from content disposition header', t => {
   t.is(token.fileName, 'foobar')
 })
 
-test('should use finalURL filename when content disposition is not available', t => {
+test('should use finalUrl filename when content disposition is not available', t => {
   const token = {
     response: {
       headers: {}
     },
-    finalURL: 'http://localhost/foobar'
+    finalUrl: 'http://localhost/foobar'
   }
 
   analyzeName(token)
@@ -59,7 +59,7 @@ test('should decode filenames coming from URLs', t => {
     response: {
       headers: {}
     },
-    finalURL: 'http://localhost/foo%20bar'
+    finalUrl: 'http://localhost/foo%20bar'
   }
 
   analyzeName(token)
@@ -72,7 +72,7 @@ test('should not set a fileName when finalUrl does not include a file name', t =
     response: {
       headers: {}
     },
-    finalURL: 'http://localhost:8000'
+    finalUrl: 'http://localhost:8000'
   }
 
   analyzeName(token)
@@ -87,7 +87,7 @@ test('should use finalUrl for invalid content disposition headers', t => {
         'content-disposition': 'asdfsdf'
       }
     },
-    finalURL: 'http://localhost/foobar'
+    finalUrl: 'http://localhost/foobar'
   }
 
   analyzeName(token)

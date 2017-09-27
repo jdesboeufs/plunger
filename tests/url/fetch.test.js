@@ -21,7 +21,7 @@ test('should attach a response object to the token', async t => {
   t.truthy(token.response)
 })
 
-test('should set the finalURL to the request', async t => {
+test('should set the finalUrl to the request', async t => {
   const location = await serveFile(path.resolve(__dirname, '../__fixtures__/file.txt'))
 
   const token = {
@@ -30,7 +30,7 @@ test('should set the finalURL to the request', async t => {
 
   await fetch(token, options)
 
-  t.is(token.finalURL, location)
+  t.is(token.finalUrl, location)
 })
 
 test('should process URL redirections', async t => {
@@ -44,6 +44,6 @@ test('should process URL redirections', async t => {
   await fetch(token, options)
 
   t.is(token.url, first)
-  t.deepEqual(token.redirectURLs, [final])
-  t.is(token.finalURL, final)
+  t.deepEqual(token.redirectUrls, [final])
+  t.is(token.finalUrl, final)
 })
