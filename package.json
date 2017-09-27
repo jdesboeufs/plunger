@@ -47,7 +47,9 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "codecov": "^2.3.0",
+    "finalhandler": "^1.1.0",
     "nyc": "^11.2.1",
+    "serve-static": "^1.12.6",
     "test-listen": "^1.0.2",
     "xo": "^0.19.0"
   },

@@ -83,8 +83,8 @@ For example, analyzing `http://example.org/index.html` would yield something lik
 { inputType: 'url',
   url: 'http://example.org/index.html',
   statusCode: 200,
-  redirectURLs: [],
-  finalURL: 'http://example.org/index.html',
+  redirectUrls: [],
+  finalUrl: 'http://example.org/index.html',
   etag: '"359670651+gzip"',
   fileName: 'index.html',
   fileTypes:
@@ -150,8 +150,8 @@ For the same `http://example.org/index.html` resources, it would return the foll
 { files:
    [ { url: 'http://example.org/index.html',
        statusCode: 200,
-       redirectURLs: [],
-       finalURL: 'http://example.org/index.html',
+       redirectUrls: [],
+       finalUrl: 'http://example.org/index.html',
        etag: '"359670651+gzip"',
        fileName: 'index.html',
        fileTypes:
@@ -166,8 +166,8 @@ For the same `http://example.org/index.html` resources, it would return the foll
   cacheable:
    [ { url: 'http://example.org/index.html',
        statusCode: 200,
-       redirectURLs: [],
-       finalURL: 'http://example.org/index.html',
+       redirectUrls: [],
+       finalUrl: 'http://example.org/index.html',
        etag: '"359670651+gzip"',
        fileName: 'index.html',
        fileTypes:
