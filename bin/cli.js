@@ -18,6 +18,7 @@ program
   .arguments('<url>')
   .option('-t, --tree', 'display tree')
   .option('-e, --etag [value]', 'pass an etag')
+  .option('-c, --concurrency [n]', 'maximum of concurrent locations analyzed', parseInt)
   .option('--no-archives', 'ignore archives')
   .option('--no-cleanup', 'do not cleanup temporary files')
   .action(async url => {
