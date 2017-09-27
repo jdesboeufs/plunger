@@ -71,10 +71,6 @@
   },
   "xo": {
     "semicolon": false,
-    "space": 2,
-    "rules": {
-      "curly": "off",
-      "capitalized-comments": "off"
-    }
+    "space": 2
   }
 }
