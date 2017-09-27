@@ -22,4 +22,13 @@ function serveFile(location) {
   })
 }
 
-module.exports = {serveFile, serveDirectory}
+function serveRedirect(target, httpCode = 302) {
+  return createServer((req, res) => {
+    res.writeHead(httpCode, {
+      location: target
+    })
+    res.end()
+  })
+}
+
+module.exports = {serveFile, serveDirectory, serveRedirect}
