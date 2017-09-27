@@ -16,6 +16,14 @@ function serveDirectory(location, options) {
   })
 }
 
+function serveEmpty(httpCode = 200) {
+  return createServer((req, res) => {
+    res.removeHeader('transfer-encoding')
+    res.writeHead(httpCode)
+    res.end()
+  })
+}
+
 function serveFile(location) {
   return serveDirectory(path.dirname(location), {
     index: path.basename(location)
@@ -31,4 +39,9 @@ function serveRedirect(target, httpCode = 302) {
   })
 }
 
-module.exports = {serveFile, serveDirectory, serveRedirect}
+module.exports = {
+  serveDirectory,
+  serveEmpty,
+  serveFile,
+  serveRedirect
+}
