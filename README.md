@@ -108,6 +108,7 @@ For example, analyzing `http://example.org/index.html` would yield something lik
 | lastCheckedAt   | `null`        | Date    | Date of `location`’s previous check, will be set to the `If-Modified-Since` HTTP header |
 | userAgent       | plunger/1.0   | String  | User agent, will be set to the `User-Agent` HTTP header |
 | timeout         | `{connection: 2000, activity: 4000, download: 0}` | Object | See timeouts section |
+| cache           | `null` | Object | See caching section |
 | maxDownloadSize | 100 * 1024 * 1024 | Number | Max size, in bytes, before the download of a file is interrupted |
 | digestAlgorithm | sha384        | String  | Algorithm which file digests are computed with |
 | extractArchives | `true`        | Boolean | Disable to stop extracting archives |
@@ -126,6 +127,50 @@ There are 3 configurable timeouts:
 
 All timeouts can be disabled by setting them to 0.
 
+#### Caching
+
+It is possible to pass a callback to retrieve informations about previous URL checks in order to allow unnecessary downloads. This is done using `cache.getUrlCache(token)` and `cache.setUrlCache(token)` options of `analyzeLocation()`.
+
+`cache.getUrlCache` will return an object of options that will override the options passed to `analyzeLocation()`. It can be interesting to set a `lastCheckedAt` and an `etag` property.
+
+The idea is to save information about an analyzed URL in `cache.setUrlCache` in a custom cache.
+
+```js
+async function getUrlCache(token) {
+  const cache = await db.getByUrl(token.url)
+
+  console.log(cache ? 'HIT' : 'MISS', token.url)
+  return {
+    etag: cache.etag,
+    lastCheckedAt: cache.createdAt
+  }
+}
+```
+
+```js
+async function setUrlCache(token) {
+  const urls = [...token.redirectUrls, token.finalUrl]
+
+  for (const url of urls) {
+    await db.create({
+      url,
+      etag: token.etag
+    })
+    console.log('SAVE', url)
+  }
+}
+```
+
+```js
+const {analyzeLocation} = require('plunger')
+
+const tree = await analyzeLocation('http://example.com', {
+  cache: {
+    getUrlCache,
+    setUrlCache
+  }
+})
+```
 
 #### Example usage:
 
@@ -220,6 +265,7 @@ const output = extractFiles(tree)
 
 console.log(`I found ${output.files.length} files`)
 ```
+
 
 ## License
 
