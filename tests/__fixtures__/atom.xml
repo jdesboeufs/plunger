@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>
+      Test runner
+    </name>
+  </author>
+  <title>Atom feed</title>
+  <updated>2017-09-19T15:13:57+02:00</updated>
+  <entry>
+    <title>File 1</title>
+    <link href="/file.txt" rel="alternate" type="text/plain"></link>
+    <id>file.txt</id>
+    <updated>2017-09-19T15:13:57+02:00</updated>
+  </entry>
+  <entry>
+    <title>Zip file</title>
+    <link href="/file.zip" rel="alternate" type="application/zip"></link>
+    <id>file.zip</id>
+    <updated>2017-09-19T15:13:57+02:00</updated>
+  </entry>
+</feed>
