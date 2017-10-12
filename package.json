@@ -42,7 +42,7 @@
     "rfc2047": "^2.0.1",
     "rimraf": "^2.6.1",
     "type-is": "^1.6.15",
-    "update-notifier": "^2.2.0"
+    "update-notifier": "^2.3.0"
   },
   "devDependencies": {
     "ava": "^0.22.0",
