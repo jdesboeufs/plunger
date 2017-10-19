@@ -3,6 +3,8 @@ const test = require('ava')
 const analyze = require('../lib/analyze')
 const {analyze: options} = require('../lib/options')
 
+const {serveFile} = require('./__helpers__/server')
+
 test('should analyze a text file completely', async t => {
   const filePath = path.resolve(__dirname, '__fixtures__/file.txt')
   const token = {
@@ -91,6 +93,30 @@ test('should analyze a directory completely', async t => {
       }
     ],
     analyzed: true
+  })
+})
+
+test('should analyze an empty index-of completely', async t => {
+  const url = await serveFile(path.resolve(__dirname, '__fixtures__/index-of/empty.html'))
+
+  const token = {url}
+
+  await analyze(token, options)
+
+  t.deepEqual(token, {
+    analyzed: true,
+    etag: token.etag,
+    children: [],
+    fileTypes: [{
+      ext: 'html',
+      mime: 'text/html',
+      source: 'url:content-type'
+    }],
+    finalUrl: url,
+    redirectUrls: [],
+    statusCode: 200,
+    type: 'index-of',
+    url
   })
 })
 
