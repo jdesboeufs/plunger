@@ -77,6 +77,16 @@ test('should set if-none-match when passing an etag', async t => {
   t.is(token.response.req.getHeader('if-none-match'), etag)
 })
 
+test('should request both etags when passing an etag with a -gzip prefix', async t => {
+  const location = await serveFile(path.resolve(__dirname, '../__fixtures__/file.txt'))
+  const token = {url: location}
+  const etag = '"cool-etag-gzip"'
+
+  await fetch(token, Object.assign({etag}, options))
+
+  t.is(token.response.req.getHeader('if-none-match'), '"cool-etag-gzip","cool-etag"')
+})
+
 test('should error if request has no body', async t => {
   const location = await serveEmpty()
   const token = {url: location}

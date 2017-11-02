@@ -67,3 +67,39 @@ test('should analyze an index-of completely', async t => {
 
   return rm(temporary)
 })
+
+test('should allow overriding fetch options with cache.getUrlCache', async t => {
+  const url = await serveFile(path.resolve(__dirname, '../__fixtures__/file.txt'))
+
+  const token = {url}
+
+  await analyzeUrl(token, Object.assign({}, options, {
+    cache: {
+      getUrlCache: token => {
+        token.hacked = true
+      }
+    }
+  }))
+
+  t.true(token.hacked)
+
+  return rm(token.temporary)
+})
+
+test('should call cache.settUrlCache to save url token data for caching purposes', async t => {
+  const url = await serveFile(path.resolve(__dirname, '../__fixtures__/file.txt'))
+
+  const token = {url}
+
+  await analyzeUrl(token, Object.assign({}, options, {
+    cache: {
+      setUrlCache: token => {
+        token.hacked = true
+      }
+    }
+  }))
+
+  t.true(token.hacked)
+
+  return rm(token.temporary)
+})
