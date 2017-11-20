@@ -69,12 +69,14 @@ test('should analyze a directory completely', async t => {
       {
         filePath: '1.txt',
         inputType: 'path',
-        path: path.join(filePath, '1.txt')
+        path: path.join(filePath, '1.txt'),
+        fromUrl: undefined
       },
       {
         filePath: '2.txt',
         inputType: 'path',
-        path: path.join(filePath, '2.txt')
+        path: path.join(filePath, '2.txt'),
+        fromUrl: undefined
       }
     ],
     analyzed: true,
@@ -99,7 +101,8 @@ test('should analyze an archive completely', async t => {
       {
         inputType: 'path',
         filePath: 'file.zip',
-        path: path.join(tmp, '_unarchived')
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: undefined
       }
     ],
     analyzed: true,

@@ -74,7 +74,8 @@ test('should analyze a directory completely', async t => {
         type: 'file',
         digest: 'sha384-HQ8oTv4+3qS5yjvVFPoTSxfq42HMx6Hu/v+AG5vWYE4B8h9r8knvAwWZ8MIY8rqM',
         fileSize: 6,
-        analyzed: true
+        analyzed: true,
+        fromUrl: undefined
       },
       {
         inputType: 'path',
@@ -89,7 +90,8 @@ test('should analyze a directory completely', async t => {
         type: 'file',
         digest: 'sha384-vRZf1IRKUdDeUJ1lNsqndj+oIGoocD7v8XQWfhfKVmtm0CbNoclCeoWCCUs0fKpy',
         fileSize: 7,
-        analyzed: true
+        analyzed: true,
+        fromUrl: undefined
       }
     ],
     analyzed: true

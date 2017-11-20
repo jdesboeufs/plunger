@@ -81,7 +81,8 @@ test('should extract an archive and add a child with the extracted folder', asyn
       {
         filePath: undefined,
         inputType: 'path',
-        path: path.join(tmp, '_unarchived')
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: undefined
       }
     ],
     type: 'archive',
@@ -117,7 +118,8 @@ test('should pass the filePath when specified', async t => {
       {
         filePath: 'somepath/hello.zip/file.zip',
         inputType: 'path',
-        path: path.join(tmp, '_unarchived')
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: undefined
       }
     ],
     type: 'archive',
@@ -153,7 +155,8 @@ test('should use the fileName when filePath is not specified', async t => {
       {
         filePath: 'file.zip',
         inputType: 'path',
-        path: path.join(tmp, '_unarchived')
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: undefined
       }
     ],
     type: 'archive',
@@ -202,6 +205,45 @@ test('should not mark invalid archives as analyzed and pass a warning message', 
       {ext: 'zip', mime: 'application/zip'}
     ],
     warning: 'Could not extract archive',
+    temporary: tmp
+  })
+
+  return rm(tmp)
+})
+
+test('should pass the url down to children', async t => {
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
+
+  const token = {
+    path: filePath,
+    fileTypes: [
+      {ext: 'zip', mime: 'application/zip'}
+    ],
+    fileName: 'file.zip',
+    url: 'foo'
+  }
+
+  await analyzeArchive(token, options)
+
+  const tmp = token.temporary
+
+  t.deepEqual(token, {
+    url: 'foo',
+    path: filePath,
+    analyzed: true,
+    fileName: 'file.zip',
+    fileTypes: [
+      {ext: 'zip', mime: 'application/zip'}
+    ],
+    children: [
+      {
+        filePath: 'file.zip',
+        inputType: 'path',
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: 'foo'
+      }
+    ],
+    type: 'archive',
     temporary: tmp
   })
 

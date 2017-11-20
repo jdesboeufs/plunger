@@ -25,12 +25,14 @@ test('should return a child for each item in the directory', async t => {
     {
       filePath: '1.txt',
       inputType: 'path',
-      path: path.join(token.path, '1.txt')
+      path: path.join(token.path, '1.txt'),
+      fromUrl: undefined
     },
     {
       filePath: '2.txt',
       inputType: 'path',
-      path: path.join(token.path, '2.txt')
+      path: path.join(token.path, '2.txt'),
+      fromUrl: undefined
     }
   ])
 })
@@ -53,4 +55,28 @@ test('should set the token as analyzed', async t => {
   await analyzeDirectory(token)
 
   t.is(token.analyzed, true)
+})
+
+test('should pass the fromUrl attribute down to children', async t => {
+  const token = {
+    path: path.resolve(__dirname, '../../__fixtures__/directory'),
+    fromUrl: 'foo'
+  }
+
+  await analyzeDirectory(token)
+
+  t.deepEqual(token.children, [
+    {
+      filePath: '1.txt',
+      inputType: 'path',
+      path: path.join(token.path, '1.txt'),
+      fromUrl: 'foo'
+    },
+    {
+      filePath: '2.txt',
+      inputType: 'path',
+      path: path.join(token.path, '2.txt'),
+      fromUrl: 'foo'
+    }
+  ])
 })
