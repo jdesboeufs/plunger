@@ -1,4 +1,5 @@
 const path = require('path')
+const url = require('url')
 const test = require('ava')
 const fetch = require('../../lib/url/fetch')
 
@@ -42,10 +43,11 @@ test('should process URL redirections and set them to the token', async t => {
   const token = {url: first}
 
   await fetch(token, options)
+  const resolvedFinal = url.resolve(first, final)
 
   t.is(token.url, first)
-  t.deepEqual(token.redirectUrls, [final])
-  t.is(token.finalUrl, final)
+  t.deepEqual(token.redirectUrls, [resolvedFinal])
+  t.is(token.finalUrl, resolvedFinal)
 })
 
 test('should the user agent passed in the options', async t => {

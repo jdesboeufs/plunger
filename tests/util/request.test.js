@@ -1,5 +1,6 @@
 const http = require('http')
 const path = require('path')
+const url = require('url')
 const test = require('ava')
 const request = require('../../lib/util/request')
 
@@ -67,9 +68,10 @@ test('should request 301 redirections', async t => {
   const redirect = await serveRedirect(location, 301)
 
   const res = await request(redirect)
+  const resolvedLocation = url.resolve(redirect, location)
 
-  t.is(res.finalUrl, location)
-  t.deepEqual(res.redirectUrls, [location])
+  t.is(res.finalUrl, resolvedLocation)
+  t.deepEqual(res.redirectUrls, [resolvedLocation])
 })
 
 test('should request 302 redirections', async t => {
@@ -77,9 +79,10 @@ test('should request 302 redirections', async t => {
   const redirect = await serveRedirect(location, 302)
 
   const res = await request(redirect)
+  const resolvedLocation = url.resolve(redirect, location)
 
-  t.is(res.finalUrl, location)
-  t.deepEqual(res.redirectUrls, [location])
+  t.is(res.finalUrl, resolvedLocation)
+  t.deepEqual(res.redirectUrls, [resolvedLocation])
 })
 
 test('should allow passing custom headers', async t => {
