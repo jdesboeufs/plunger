@@ -8,7 +8,7 @@
 
 > Powerful link analyzer
 
-`plunger` analyzes an URL or a local path and recursively builds a tree of the files it contains or links to. It then extracts relevant files and file groups from that tree. It can associate files that work together, filter specific types, ignore files that haven’t changed since the last check, or depending on a specific Etag. And all of it is configurable.
+`plunger` analyzes an URL or a local path and recursively builds a tree of the files it contains or links to. It can ignore files that haven’t changed since the last check, or depending on a specific Etag. All of it is configurable.
 
 The analyzed files are downloaded to temporary locations on your system. It’s up to you to do anything with them, and to clean those locations afterwards.
 
@@ -71,9 +71,7 @@ A tree is then built recursively, following that principle.
 
 ## API
 
-`plunger` only exposes two functions:
-
-### `analyzeLocation(location, options)`
+`plunger` only exposes one function: `analyzeLocation(location, options)`
 
 This function builds a complete tree of all the items found at `location`.
 
@@ -184,89 +182,6 @@ const tree = await analyzeLocation('http://example.org/', {
 
 console.log(tree.digest)
 ```
-
-
-### `extractFiles(node, options)`
-
-This function flattens the tree returned by `analyzeLocation` to identify files and file groups. It also returns useful arrays of `errors`, `warnings`, `cacheable` resources and `temporary` locations that can be cleaned up later.
-
-For the same `http://example.org/index.html` resources, it would return the following:
-
-```js
-{ files:
-   [ { url: 'http://example.org/index.html',
-       statusCode: 200,
-       redirectUrls: [],
-       finalUrl: 'http://example.org/index.html',
-       etag: '"359670651+gzip"',
-       fileName: 'index.html',
-       fileTypes:
-        [ { ext: 'html', mime: 'text/html', source: 'url:content-type' },
-          { ext: 'html', mime: 'text/html', source: 'url:filename' },
-          { ext: 'html', mime: 'text/html', source: 'path:filename' } ],
-       fileSize: 1270,
-       digest: 'sha384-bo7Rewmo/VHAS0xEa1JGwfNQAKfP42gfnoF9DM3grWq+0TT4ygQ+4P4NJLNBFBI/',
-       path: '/var/folders/wb/4xx5dj9j0r12lym3mgxhj0l00000gn/T/plunger_ITEo7m/index.html',
-       type: 'file' } ],
-  unchanged: [],
-  cacheable:
-   [ { url: 'http://example.org/index.html',
-       statusCode: 200,
-       redirectUrls: [],
-       finalUrl: 'http://example.org/index.html',
-       etag: '"359670651+gzip"',
-       fileName: 'index.html',
-       fileTypes:
-        [ { ext: 'html', mime: 'text/html', source: 'url:content-type' },
-          { ext: 'html', mime: 'text/html', source: 'url:filename' },
-          { ext: 'html', mime: 'text/html', source: 'path:filename' } ],
-       fileSize: 1270,
-       digest: 'sha384-bo7Rewmo/VHAS0xEa1JGwfNQAKfP42gfnoF9DM3grWq+0TT4ygQ+4P4NJLNBFBI/',
-       path: '/var/folders/wb/4xx5dj9j0r12lym3mgxhj0l00000gn/T/plunger_ITEo7m/index.html',
-       type: 'file' } ],
-  errors: [],
-  warnings: [],
-  temporary: [ '/var/folders/wb/4xx5dj9j0r12lym3mgxhj0l00000gn/T/plunger_ITEo7m' ] }
-```
-
-- `node` is an element returned by `analyzeLocation`
-- `options` is an object of `options`:
-  - `types` is an array of known types in the following form:
-    ```js
-    [
-      { extensions: ['shp'],
-        type: 'shapefile',
-        related: ['shx', 'dbf', 'prj'] },
-      { extensions: ['pdf', 'doc'],
-        type: 'document' }
-    ]
-    ```
-  - `keepUnknownTypes` (defaults to `true`) controls whether unspecified types should be left in the output.
-
-The `related` extensions of a type will be linked to the matching extension type as dependants and the `type` will be updated.
-
-It returns an Object with the following structure:
-```js
-{
-  files: [],     // List of matched files
-  unchanged: [], // HTTP 304
-  cacheable: [], // List of resources that contain an Etag
-  errors: [],    // List of resources that errored
-  warnings: [],  // List of resources that yielded a warning but still went through all of it
-  temporary: []  // List of strings of temporary directories that need cleanup
-}
-```
-
-#### Example usage:
-
-```js
-const {extractFiles} = require('plunger')
-
-const output = extractFiles(tree)
-
-console.log(`I found ${output.files.length} files`)
-```
-
 
 ## License
 

@@ -1,7 +1,7 @@
 const path = require('path')
 const test = require('ava')
 const analyze = require('../lib/analyze')
-const {analyze: options} = require('../lib/options')
+const options = require('../lib/options')
 
 const {serveFile} = require('./__helpers__/server')
 
