@@ -105,7 +105,7 @@ For example, analyzing `http://example.org/index.html` would yield something lik
 | option          | default value | type    | description |
 |-----------------|---------------|---------|----------|
 | etag            | `null`        | String  | Will be set to the `If-None-Match` HTTP header |
-| lastCheckedAt   | `null`        | Date    | Date of `location`’s previous check, will be set to the `If-Modified-Since` HTTP header |
+| lastModified    | `null`        | String|Date | Date of `location`’s last modification date, will be set to the `If-Modified-Since` HTTP header |
 | userAgent       | plunger/1.0   | String  | User agent, will be set to the `User-Agent` HTTP header |
 | timeout         | `{connection: 2000, activity: 4000, download: 0}` | Object | See timeouts section |
 | cache           | `null` | Object | See caching section |
@@ -131,7 +131,7 @@ All timeouts can be disabled by setting them to 0.
 
 It is possible to pass a callback to retrieve informations about previous URL checks in order to allow unnecessary downloads. This is done using `cache.getUrlCache(token)` and `cache.setUrlCache(token)` options of `analyzeLocation()`.
 
-`cache.getUrlCache` will return an object of options that will override the options passed to `analyzeLocation()`. It can be interesting to set a `lastCheckedAt` and an `etag` property.
+`cache.getUrlCache` will return an object of options that will override the options passed to `analyzeLocation()`. It can be interesting to set a `lastModified` and an `etag` property.
 
 The idea is to save information about an analyzed URL in `cache.setUrlCache` in a custom cache.
 
@@ -142,7 +142,7 @@ async function getUrlCache(token) {
   console.log(cache ? 'HIT' : 'MISS', token.url)
   return {
     etag: cache.etag,
-    lastCheckedAt: cache.createdAt
+    lastModified: cache.lastModified
   }
 }
 ```
@@ -154,7 +154,8 @@ async function setUrlCache(token) {
   for (const url of urls) {
     await db.create({
       url,
-      etag: token.etag
+      etag: token.etag,
+      lastModified: token.lastModified
     })
     console.log('SAVE', url)
   }
