@@ -53,6 +53,7 @@ test('should analyze an index-of completely', async t => {
       }
     ],
     etag: token.etag,
+    lastModified: token.lastModified,
     fileTypes: [{
       ext: 'html',
       mime: 'text/html',

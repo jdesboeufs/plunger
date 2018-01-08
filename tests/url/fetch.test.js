@@ -59,14 +59,24 @@ test('should the user agent passed in the options', async t => {
   t.is(token.response.req.getHeader('user-agent'), options.userAgent)
 })
 
-test('should set if-modified-since when passing a lastCheckedAt date', async t => {
+test('should set if-modified-since when passing a lastModified string', async t => {
   const location = await serveFile(path.resolve(__dirname, '../__fixtures__/file.txt'))
   const token = {url: location}
-  const lastCheckedAt = new Date(2017, 4, 2)
+  const lastModified = 'Mon, 01 May 2017 22:00:00 GMT'
 
-  await fetch(token, Object.assign({lastCheckedAt}, options))
+  await fetch(token, Object.assign({lastModified}, options))
 
-  t.is(token.response.req.getHeader('if-modified-since'), lastCheckedAt.toUTCString())
+  t.is(token.response.req.getHeader('if-modified-since'), lastModified)
+})
+
+test('should set if-modified-since when passing a lastModified date', async t => {
+  const location = await serveFile(path.resolve(__dirname, '../__fixtures__/file.txt'))
+  const token = {url: location}
+  const lastModified = new Date(2017, 4, 2)
+
+  await fetch(token, Object.assign({lastModified}, options))
+
+  t.is(token.response.req.getHeader('if-modified-since'), lastModified.toUTCString())
 })
 
 test('should set if-none-match when passing an etag', async t => {

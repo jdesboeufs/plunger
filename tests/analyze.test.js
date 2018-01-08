@@ -108,6 +108,7 @@ test('should analyze an empty index-of completely', async t => {
   t.deepEqual(token, {
     analyzed: true,
     etag: token.etag,
+    lastModified: token.lastModified,
     children: [],
     fileTypes: [{
       ext: 'html',
