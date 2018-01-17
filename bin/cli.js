@@ -6,7 +6,7 @@ const program = require('commander')
 const updateNotifier = require('update-notifier')
 const rimraf = require('rimraf')
 
-const {analyzeLocation, extractFiles} = require('../')
+const {analyzeLocation} = require('../')
 const pkg = require('../package.json')
 
 const rimrafAsync = promisify(rimraf)
@@ -16,7 +16,6 @@ updateNotifier({pkg}).notify()
 program
   .version(pkg.version)
   .arguments('<url>')
-  .option('-t, --tree', 'display tree')
   .option('-e, --etag [value]', 'pass an etag')
   .option('-c, --concurrency [n]', 'maximum of concurrent locations analyzed', parseInt)
   .option('--no-archives', 'ignore archives')
@@ -27,21 +26,21 @@ program
       etag: program.etag
     })
 
-    if (program.tree) {
-      console.log(
-        inspect(tree, {colors: true, depth: 10})
-      )
-    } else {
-      const extract = extractFiles(tree)
+    console.log(inspect(tree, {colors: true, depth: 10}))
 
-      console.log(
-        inspect(extract, {colors: true, depth: 10})
-      )
-
-      if (program.cleanup) {
-        await Promise.all(extract.temporary.map(t => rimrafAsync(t)))
-      }
+    if (program.cleanup) {
+      await cleanup(tree)
     }
   })
+
+async function cleanup(node) {
+  if (node.temporary) {
+    await rimrafAsync(node.temporary)
+  }
+
+  if (node.children) {
+    await Promise.all(node.children.map(cleanup))
+  }
+}
 
 program.parse(process.argv)
