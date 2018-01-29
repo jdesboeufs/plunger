@@ -192,6 +192,15 @@ const tree = await analyzeLocation('http://example.com', {
 })
 ```
 
+##### Options
+
+All three cache functions are also called with the options passed to `analyzeLocation`, this allows to use the logger in them, for example.
+
+```js
+async function getUrlCache(token, options) {
+  options.logger.log('check for url cache', token)
+}
+```
 
 #### Example usage:
 
