@@ -1,7 +1,6 @@
-# plunger
+# plunger [![CircleCI](https://circleci.com/gh/inspireteam/plunger.svg?style=svg)](https://circleci.com/gh/inspireteam/plunger)
 
 [![npm version](https://img.shields.io/npm/v/plunger.svg)](https://www.npmjs.com/package/plunger)
-[![Build Status](https://travis-ci.org/inspireteam/plunger.svg?branch=master)](https://travis-ci.org/inspireteam/plunger)
 [![codecov](https://codecov.io/gh/inspireteam/plunger/branch/master/graph/badge.svg)](https://codecov.io/gh/inspireteam/plunger)
 [![dependencies Status](https://david-dm.org/inspireteam/plunger/status.svg)](https://david-dm.org/inspireteam/plunger)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
