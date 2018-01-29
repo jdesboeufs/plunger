@@ -92,3 +92,21 @@ test('should set the token as analyzed', async t => {
 
   t.is(token.analyzed, true)
 })
+
+test('should mark the file as unchanged if the cache is matched', async t => {
+  const token = {
+    path: path.resolve(__dirname, '../../__fixtures__/file.txt')
+  }
+
+  await analyzeFile(token, {
+    digestAlgorithm: 'md5',
+    cache: {
+      getFileCache: () => {
+        return true
+      }
+    }
+  })
+
+  t.is(token.type, 'unchanged')
+  t.true(token.analyzed)
+})

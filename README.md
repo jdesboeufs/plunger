@@ -126,11 +126,24 @@ All timeouts can be disabled by setting them to 0.
 
 #### Caching
 
+##### URL Cache
+
 It is possible to pass a callback to retrieve informations about previous URL checks in order to allow unnecessary downloads. This is done using `cache.getUrlCache(token)` and `cache.setUrlCache(token)` options of `analyzeLocation()`.
 
 `cache.getUrlCache` will return an object of options that will override the options passed to `analyzeLocation()`. It can be interesting to set a `lastModified` and an `etag` property.
 
 The idea is to save information about an analyzed URL in `cache.setUrlCache` in a custom cache.
+
+##### File Cache
+
+You can also pass a callback to match a file’s digest against a database, in order to stop processing the file if it hasn’t change. For example, it would be wise to prevent extracting an archive and analyzing its content if the archive hasn’t changed.
+
+This is done using the `cache.getFileCache(token)` option of `analyzeLocation()`.
+
+`cache.getFileCache` will return a `Boolean` indicating whether the file is in cache. Return `true` to stop further analyzes.
+
+
+##### Example
 
 ```js
 async function getUrlCache(token) {
@@ -160,15 +173,25 @@ async function setUrlCache(token) {
 ```
 
 ```js
+async function getFileCache(token) {
+  const cache = await db.findFileFromToken(token) // Magic
+
+  return cache.digest === token.digest
+}
+```
+
+```js
 const {analyzeLocation} = require('plunger')
 
 const tree = await analyzeLocation('http://example.com', {
   cache: {
     getUrlCache,
-    setUrlCache
+    setUrlCache,
+    getFileCache
   }
 })
 ```
+
 
 #### Example usage:
 
