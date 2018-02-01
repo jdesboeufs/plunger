@@ -77,7 +77,7 @@ test.cb('bytesLimit should error if the byte limit is reached', t => {
   const limiter = bytesLimit(10)
 
   limiter.on('error', err => {
-    t.is(err.message, 'Content limit reached')
+    t.is(err.message, 'Content limit reached (13 > 10)')
     t.end()
   })
 
