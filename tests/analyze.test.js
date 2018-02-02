@@ -109,6 +109,7 @@ test('should analyze an empty index-of completely', async t => {
     analyzed: true,
     etag: token.etag,
     lastModified: token.lastModified,
+    cacheControl: token.cacheControl,
     children: [],
     fileTypes: [{
       ext: 'html',
