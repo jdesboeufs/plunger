@@ -83,6 +83,8 @@ For example, analyzing `http://example.org/index.html` would yield something lik
   redirectUrls: [],
   finalUrl: 'http://example.org/index.html',
   etag: '"359670651+gzip"',
+  lastModified: 'Fri, 09 Aug 2013 23:54:35 GMT',
+  cacheControl: 'max-age=604800',
   fileName: 'index.html',
   fileTypes:
    [ { ext: 'html', mime: 'text/html', source: 'url:content-type' },

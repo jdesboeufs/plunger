@@ -54,6 +54,7 @@ test('should analyze an index-of completely', async t => {
     ],
     etag: token.etag,
     lastModified: token.lastModified,
+    cacheControl: token.cacheControl,
     fileTypes: [{
       ext: 'html',
       mime: 'text/html',
