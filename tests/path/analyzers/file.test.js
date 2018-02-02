@@ -107,6 +107,7 @@ test('should mark the file as unchanged if the cache is matched', async t => {
     }
   })
 
-  t.is(token.type, 'unchanged')
+  t.is(token.type, 'file')
+  t.true(token.unchanged)
   t.true(token.analyzed)
 })
