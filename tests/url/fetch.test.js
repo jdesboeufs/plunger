@@ -106,7 +106,7 @@ test('should error if request has no body', async t => {
   return t.throws(fetch(token, options), 'There was no body in the response')
 })
 
-test('should set the unchanged type for HTTP 304', async t => {
+test('should set the unchanged property for HTTP 304', async t => {
   const location = await serveEmpty(304)
   const token = {url: location}
 
@@ -114,8 +114,8 @@ test('should set the unchanged type for HTTP 304', async t => {
 
   t.deepEqual(token, {
     analyzed: true,
+    unchanged: true,
     statusCode: 304,
-    type: 'unchanged',
     url: location,
     finalUrl: location,
     redirectUrls: []
