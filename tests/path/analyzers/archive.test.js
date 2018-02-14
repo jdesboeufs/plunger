@@ -249,3 +249,83 @@ test('should pass the url down to children', async t => {
 
   return rm(tmp)
 })
+
+test('should pass the fromUrl down to children', async t => {
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
+
+  const token = {
+    path: filePath,
+    fileTypes: [
+      {ext: 'zip', mime: 'application/zip'}
+    ],
+    fileName: 'file.zip',
+    fromUrl: 'foo'
+  }
+
+  await analyzeArchive(token, options)
+
+  const tmp = token.temporary
+
+  t.deepEqual(token, {
+    fromUrl: 'foo',
+    path: filePath,
+    analyzed: true,
+    fileName: 'file.zip',
+    fileTypes: [
+      {ext: 'zip', mime: 'application/zip'}
+    ],
+    children: [
+      {
+        filePath: 'file.zip',
+        inputType: 'path',
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: 'foo'
+      }
+    ],
+    type: 'archive',
+    temporary: tmp
+  })
+
+  return rm(tmp)
+})
+
+test('should prioritize url over fromUrl when passing them down to children', async t => {
+  const filePath = path.resolve(__dirname, '../../__fixtures__/file.zip')
+
+  const token = {
+    path: filePath,
+    fileTypes: [
+      {ext: 'zip', mime: 'application/zip'}
+    ],
+    fileName: 'file.zip',
+    url: 'foo',
+    fromUrl: 'bar'
+  }
+
+  await analyzeArchive(token, options)
+
+  const tmp = token.temporary
+
+  t.deepEqual(token, {
+    url: 'foo',
+    fromUrl: 'bar',
+    path: filePath,
+    analyzed: true,
+    fileName: 'file.zip',
+    fileTypes: [
+      {ext: 'zip', mime: 'application/zip'}
+    ],
+    children: [
+      {
+        filePath: 'file.zip',
+        inputType: 'path',
+        path: path.join(tmp, '_unarchived'),
+        fromUrl: 'foo'
+      }
+    ],
+    type: 'archive',
+    temporary: tmp
+  })
+
+  return rm(tmp)
+})
