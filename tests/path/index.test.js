@@ -106,6 +106,7 @@ test('should analyze an archive completely', async t => {
       }
     ],
     analyzed: true,
+    digest: 'md5-h6u6eX7aEtGSOMTyE5yQRQ==',
     path: filePath,
     fileTypes: [
       {
@@ -175,4 +176,20 @@ test('should remove the stats from the token on error', async t => {
   await t.throws(analyzePath(token, options, 'Unsupported file type'))
 
   t.is(token.stats, undefined)
+})
+
+test('should mark the file as unchanged if the cache is matched', async t => {
+  const token = {
+    path: path.resolve(__dirname, '../__fixtures__/file.txt')
+  }
+
+  await analyzePath(token, {
+    ...options,
+    cache: {
+      getFileCache: () => true
+    }
+  })
+
+  t.true(token.unchanged)
+  t.true(token.analyzed)
 })

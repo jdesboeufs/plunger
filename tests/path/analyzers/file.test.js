@@ -1,10 +1,5 @@
-const path = require('path')
 const test = require('ava')
 const analyzeFile = require('../../../lib/path/analyzers/file')
-
-const options = {
-  digestAlgorithm: 'sha384'
-}
 
 test('should not update token if already analyzed', async t => {
   const token = {
@@ -16,28 +11,6 @@ test('should not update token if already analyzed', async t => {
 
   t.is(ret, false)
   t.deepEqual(token, save)
-})
-
-test('should compute the digest', async t => {
-  const token = {
-    path: path.resolve(__dirname, '../../__fixtures__/file.txt')
-  }
-
-  await analyzeFile(token, options)
-
-  t.is(token.digest, 'sha384-7I0Udziy5L9vXFrFCpp1k/se4t4BR01vimx/23rJRVgHcqUiWkxyUafAaXrLe4QF')
-})
-
-test('should compute with the specified algorithm', async t => {
-  const token = {
-    path: path.resolve(__dirname, '../../__fixtures__/file.txt')
-  }
-
-  await analyzeFile(token, {
-    digestAlgorithm: 'md5'
-  })
-
-  t.is(token.digest, 'md5-yJfRQQr48sdPuhGx21Eeng==')
 })
 
 test('should not override the digest', async t => {
@@ -78,36 +51,15 @@ test('should set the token type to file', async t => {
     digest: 'already computed'
   }
 
-  await analyzeFile(token, options)
+  await analyzeFile(token)
 
   t.is(token.type, 'file')
 })
 
 test('should set the token as analyzed', async t => {
-  const token = {
-    digest: 'already computed'
-  }
+  const token = {}
 
-  await analyzeFile(token, options)
+  await analyzeFile(token)
 
   t.is(token.analyzed, true)
-})
-
-test('should mark the file as unchanged if the cache is matched', async t => {
-  const token = {
-    path: path.resolve(__dirname, '../../__fixtures__/file.txt')
-  }
-
-  await analyzeFile(token, {
-    digestAlgorithm: 'md5',
-    cache: {
-      getFileCache: () => {
-        return true
-      }
-    }
-  })
-
-  t.is(token.type, 'file')
-  t.true(token.unchanged)
-  t.true(token.analyzed)
 })
