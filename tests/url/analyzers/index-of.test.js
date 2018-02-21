@@ -156,7 +156,7 @@ test('should return an array of children', async t => {
   await fetch(token, options)
   await analyzeIndexOf(token, options)
 
-  const temporary = token.children[0].temporary
+  const [{temporary}] = token.children
 
   t.deepEqual(token.children, [
     {

@@ -6,7 +6,7 @@ const program = require('commander')
 const updateNotifier = require('update-notifier')
 const rimraf = require('rimraf')
 
-const {analyzeLocation} = require('../')
+const {analyzeLocation} = require('..')
 const pkg = require('../package.json')
 
 const rimrafAsync = promisify(rimraf)

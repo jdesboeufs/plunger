@@ -11,7 +11,7 @@ test('should fail if location is not provided', t => {
 })
 
 test('should fail if too many redirects happened', t => {
-  return t.throws(request('whatever', null, 0, Array(5)), 'Too many redirections')
+  return t.throws(request('whatever', null, 0, new Array(5)), 'Too many redirections')
 })
 
 test('should fail if the protocol is not http or https', t => {
