@@ -18,8 +18,7 @@ test.cb('computeDigest should compute a hash of the stream data', t => {
   let bodyLength
 
   const digester = computeDigest('md5', result => {
-    digest = result.digest
-    bodyLength = result.bodyLength
+    ({digest, bodyLength} = result)
   })
 
   digester.on('error', t.ifError)
@@ -37,7 +36,7 @@ test.cb('computeDigest should return a digest using the passed algorithm', t => 
   let digest
 
   const digester = computeDigest('sha384', result => {
-    digest = result.digest
+    ({digest} = result)
   })
 
   digester.on('error', t.ifError)

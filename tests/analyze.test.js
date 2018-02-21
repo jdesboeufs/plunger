@@ -37,7 +37,7 @@ test('should analyze an invalid path completely', async t => {
 
   await analyze(token, options)
 
-  const error = token.error
+  const {error} = token
 
   t.deepEqual(token, {
     inputType: 'path',

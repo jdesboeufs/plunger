@@ -36,7 +36,7 @@ test('should analyze an index-of completely', async t => {
 
   await analyzeUrl(token, options)
 
-  const temporary = token.children[0].temporary
+  const [{temporary}] = token.children
 
   t.deepEqual(token, {
     analyzed: true,
