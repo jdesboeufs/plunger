@@ -41,7 +41,7 @@
     "read-chunk": "^2.1.0",
     "rfc2047": "^2.0.1",
     "rimraf": "^2.6.1",
-    "type-is": "^1.6.15",
+    "type-is": "^1.6.16",
     "update-notifier": "^2.3.0"
   },
   "devDependencies": {
