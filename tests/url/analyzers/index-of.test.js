@@ -4,7 +4,6 @@ const analyzeIndexOf = require('../../../lib/url/analyzers/index-of')
 const fetch = require('../../../lib/url/fetch')
 
 const {serveFile} = require('../../__helpers__/server')
-const rm = require('../../__helpers__/rm')
 
 const options = {
   userAgent: 'plunger/test',
@@ -52,8 +51,6 @@ test('should analyze content as an index of page', async t => {
 
   t.true(token.analyzed)
   t.is(token.type, 'index-of')
-
-  return rm(token.children[0].temporary)
 })
 
 test('should not analyze as index of if no indexOfMatches are specified', async t => {
@@ -156,20 +153,14 @@ test('should return an array of children', async t => {
   await fetch(token, options)
   await analyzeIndexOf(token, options)
 
-  const [{temporary}] = token.children
-
   t.deepEqual(token.children, [
     {
       inputType: 'url',
-      temporary,
       url: `${url}/file.txt`
     },
     {
       inputType: 'url',
-      temporary,
       url: `${url}/file.zip`
     }
   ])
-
-  return rm(temporary)
 })
