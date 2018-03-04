@@ -36,19 +36,15 @@ test('should analyze an index-of completely', async t => {
 
   await analyzeUrl(token, options)
 
-  const [{temporary}] = token.children
-
   t.deepEqual(token, {
     analyzed: true,
     children: [
       {
         inputType: 'url',
-        temporary,
         url: `${url}/file.txt`
       },
       {
         inputType: 'url',
-        temporary,
         url: `${url}/file.zip`
       }
     ],
@@ -66,8 +62,6 @@ test('should analyze an index-of completely', async t => {
     type: 'index-of',
     url
   })
-
-  return rm(temporary)
 })
 
 test('should allow overriding fetch options with cache.getUrlCache', async t => {
