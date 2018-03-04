@@ -1,6 +1,6 @@
 {
   "name": "plunger",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Powerful link analyzer",
   "main": "index.js",
   "repository": {
