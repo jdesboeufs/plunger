@@ -122,6 +122,7 @@ test('should analyze an archive completely', async t => {
     ],
     temporary: tmp,
     fileName: 'file.zip',
+    fileSize: 179,
     type: 'archive'
   })
 
