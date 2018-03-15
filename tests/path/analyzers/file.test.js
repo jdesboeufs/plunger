@@ -13,39 +13,6 @@ test('should not update token if already analyzed', async t => {
   t.deepEqual(token, save)
 })
 
-test('should not override the digest', async t => {
-  const token = {
-    digest: 'already computed'
-  }
-
-  await analyzeFile(token)
-
-  t.is(token.digest, 'already computed')
-})
-
-test('should set the fileSize when the stat object is provided', async t => {
-  const token = {
-    digest: 'already computed',
-    stats: {size: 70}
-  }
-
-  await analyzeFile(token)
-
-  t.is(token.fileSize, 70)
-})
-
-test('should not override the fileSize', async t => {
-  const token = {
-    digest: 'already computed',
-    fileSize: 42,
-    stats: {size: 70}
-  }
-
-  await analyzeFile(token)
-
-  t.is(token.fileSize, 42)
-})
-
 test('should set the token type to file', async t => {
   const token = {
     digest: 'already computed'
