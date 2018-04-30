@@ -35,22 +35,6 @@ Or if you’re using Yarn:
 $ yarn add plunger
 ```
 
-### CLI
-
-You can install `plunger` globally, using:
-
-```shell
-$ npm install --global plunger
-$ plunger --help
-```
-
-Or, with Yarn:
-
-```shell
-$ yarn global add plunger
-$ plunger --help
-```
-
 ## Analyzing
 
 Two types of resources can be identified: files and containers. Containers either contain other resources or link to other resources.
