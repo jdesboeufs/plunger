@@ -13,9 +13,6 @@
     "lint": "xo",
     "test": "nyc ava"
   },
-  "bin": {
-    "plunger": "bin/cli.js"
-  },
   "files": [
     "bin/",
     "lib/",
@@ -24,7 +21,6 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "chalk": "^2.3.2",
-    "commander": "^2.15.0",
     "content-disposition": "^0.5.2",
     "content-type": "^1.0.2",
     "debug": "^3.1.0",
@@ -41,8 +37,7 @@
     "read-chunk": "^2.1.0",
     "rfc2047": "^2.0.1",
     "rimraf": "^2.6.1",
-    "type-is": "^1.6.16",
-    "update-notifier": "^2.3.0"
+    "type-is": "^1.6.16"
   },
   "devDependencies": {
     "ava": "^0.25.0",
