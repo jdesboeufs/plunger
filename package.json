@@ -27,7 +27,7 @@
     "decompress-response": "^3.3.0",
     "execa": "^0.10.0",
     "feedparser": "^2.2.9",
-    "file-type": "^7.6.0",
+    "file-type": "^8.0.0",
     "get-stream": "^3.0.0",
     "hasha": "^3.0.0",
     "htmlparser2": "^3.9.2",
