@@ -1,5 +1,5 @@
 const test = require('ava')
-const analyzeTypes = require('../../../lib/url/analyzers/types')
+const analyzeTypes = require('../../../lib/http/analyzers/types')
 
 test('should not update token if already analyzed', async t => {
   const token = {
@@ -27,7 +27,7 @@ test('should extract the type from the content-type header', async t => {
   t.deepEqual(token.fileTypes, [{
     ext: 'txt',
     mime: 'text/plain',
-    source: 'url:content-type'
+    source: 'http:content-type'
   }])
 })
 
@@ -45,7 +45,7 @@ test('should not return an extension for unknown mime types', async t => {
   t.deepEqual(token.fileTypes, [{
     ext: false,
     mime: 'foo/bar',
-    source: 'url:content-type'
+    source: 'http:content-type'
   }])
 })
 
@@ -67,7 +67,7 @@ test('should use the fileName extension to add a fileType', async t => {
   t.deepEqual(token.fileTypes, [{
     ext: 'txt',
     mime: 'text/plain',
-    source: 'url:filename'
+    source: 'http:filename'
   }])
 })
 
@@ -81,7 +81,7 @@ test('should not set a mime for unknown extensions', async t => {
   t.deepEqual(token.fileTypes, [{
     ext: 'lol',
     mime: false,
-    source: 'url:filename'
+    source: 'http:filename'
   }])
 })
 
@@ -111,12 +111,12 @@ test('should return 2 types if content-type and fileName are available', async t
     {
       ext: 'txt',
       mime: 'text/plain',
-      source: 'url:content-type'
+      source: 'http:content-type'
     },
     {
       ext: 'txt',
       mime: 'text/plain',
-      source: 'url:filename'
+      source: 'http:filename'
     }
   ])
 })

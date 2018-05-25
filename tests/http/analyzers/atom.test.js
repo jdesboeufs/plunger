@@ -1,7 +1,7 @@
 const path = require('path')
 const test = require('ava')
-const analyzeAtom = require('../../../lib/url/analyzers/atom')
-const fetch = require('../../../lib/url/fetch')
+const analyzeAtom = require('../../../lib/http/analyzers/atom')
+const fetch = require('../../../lib/http/fetch')
 
 const {serveFile} = require('../../__helpers__/server')
 

@@ -114,7 +114,7 @@ test('should analyze an empty index-of completely', async t => {
     fileTypes: [{
       ext: 'html',
       mime: 'text/html',
-      source: 'url:content-type'
+      source: 'http:content-type'
     }],
     finalUrl: url,
     redirectUrls: [],

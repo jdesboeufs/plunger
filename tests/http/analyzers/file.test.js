@@ -1,5 +1,5 @@
 const test = require('ava')
-const analyzeFile = require('../../../lib/url/analyzers/file')
+const analyzeFile = require('../../../lib/http/analyzers/file')
 
 test('should not update token if already analyzed', async t => {
   const token = {

@@ -1,6 +1,6 @@
 const path = require('path')
 const test = require('ava')
-const analyzeUrl = require('../../lib/url')
+const analyzeUrl = require('../../lib/http')
 
 const {serveFile} = require('../__helpers__/server')
 const rm = require('../__helpers__/rm')
@@ -54,7 +54,7 @@ test('should analyze an index-of completely', async t => {
     fileTypes: [{
       ext: 'html',
       mime: 'text/html',
-      source: 'url:content-type'
+      source: 'http:content-type'
     }],
     finalUrl: url,
     redirectUrls: [],

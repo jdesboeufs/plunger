@@ -1,5 +1,5 @@
 const test = require('ava')
-const analyzeName = require('../../../lib/url/analyzers/name')
+const analyzeName = require('../../../lib/http/analyzers/name')
 
 test('should not update token if already analyzed', t => {
   const token = {
