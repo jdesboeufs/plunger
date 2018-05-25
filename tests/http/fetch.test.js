@@ -1,7 +1,7 @@
 const path = require('path')
 const url = require('url')
 const test = require('ava')
-const fetch = require('../../lib/url/fetch')
+const fetch = require('../../lib/http/fetch')
 
 const {serveFile, serveEmpty, serveRedirect} = require('../__helpers__/server')
 

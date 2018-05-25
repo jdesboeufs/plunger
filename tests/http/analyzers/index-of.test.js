@@ -1,7 +1,7 @@
 const path = require('path')
 const test = require('ava')
-const analyzeIndexOf = require('../../../lib/url/analyzers/index-of')
-const fetch = require('../../../lib/url/fetch')
+const analyzeIndexOf = require('../../../lib/http/analyzers/index-of')
+const fetch = require('../../../lib/http/fetch')
 
 const {serveFile} = require('../../__helpers__/server')
 

@@ -39,14 +39,14 @@ $ yarn add plunger
 
 Two types of resources can be identified: files and containers. Containers either contain other resources or link to other resources.
 
-There are two types of analyzers: `url` and `path`.
-An URL will go through the `url` analyzers to determine whether the resources can be an `url` container, then files will be downloaded and go through the `path` analyzers, to identify `path` containers.
+There are two types of analyzers: `http` and `path`.
+An URL will go through the `http` analyzers to determine whether the resources can be an `http` container, then files will be downloaded and go through the `path` analyzers, to identify `path` containers.
 
 Supported container types:
 - Directories (`path`)
 - Archives (`path`)
-- *Index of* pages (`url`)
-- Atom feeds (`url`)
+- *Index of* pages (`http`)
+- Atom feeds (`http`)
 
 Everything that is not matched as a container will be a file. Containers will expose an array of children resources, which can be either containers, or files.
 
@@ -61,7 +61,7 @@ This function builds a complete tree of all the items found at `location`.
 For example, analyzing `http://example.org/index.html` would yield something like the following:
 
 ```js
-{ inputType: 'url',
+{ inputType: 'http',
   url: 'http://example.org/index.html',
   statusCode: 200,
   redirectUrls: [],
@@ -71,8 +71,8 @@ For example, analyzing `http://example.org/index.html` would yield something lik
   cacheControl: 'max-age=604800',
   fileName: 'index.html',
   fileTypes:
-   [ { ext: 'html', mime: 'text/html', source: 'url:content-type' },
-     { ext: 'html', mime: 'text/html', source: 'url:filename' },
+   [ { ext: 'html', mime: 'text/html', source: 'http:content-type' },
+     { ext: 'html', mime: 'text/html', source: 'http:filename' },
      { ext: 'html', mime: 'text/html', source: 'path:filename' } ],
   temporary: '/var/folders/wb/4xx5dj9j0r12lym3mgxhj0l00000gn/T/plunger_nk443a',
   fileSize: 1270,
