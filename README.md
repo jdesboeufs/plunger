@@ -1,8 +1,9 @@
-# plunger [![CircleCI](https://circleci.com/gh/inspireteam/plunger.svg?style=svg)](https://circleci.com/gh/inspireteam/plunger)
+# plunger [![CircleCI](https://circleci.com/gh/geodatagouv/plunger.svg?style=svg)](https://circleci.com/gh/geodatagouv/plunger)
 
 [![npm version](https://img.shields.io/npm/v/plunger.svg)](https://www.npmjs.com/package/plunger)
-[![codecov](https://codecov.io/gh/inspireteam/plunger/branch/master/graph/badge.svg)](https://codecov.io/gh/inspireteam/plunger)
-[![dependencies Status](https://david-dm.org/inspireteam/plunger/status.svg)](https://david-dm.org/inspireteam/plunger)
+[![codecov](https://codecov.io/gh/geodatagouv/plunger/branch/master/graph/badge.svg)](https://codecov.io/gh/geodatagouv/plunger)
+[![dependencies Status](https://david-dm.org/geodatagouv/plunger/status.svg)](https://david-dm.org/geodatagouv/plunger)
+[![Known Vulnerabilities](https://snyk.io/test/github/geodatagouv/plunger/badge.svg?targetFile=package.json)](https://snyk.io/test/github/geodatagouv/plunger?targetFile=package.json)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 > Powerful link analyzer
