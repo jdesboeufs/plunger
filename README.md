@@ -1,10 +1,10 @@
 # plunger [![CircleCI](https://circleci.com/gh/geodatagouv/plunger.svg?style=svg)](https://circleci.com/gh/geodatagouv/plunger)
 
-[![npm version](https://img.shields.io/npm/v/plunger.svg)](https://www.npmjs.com/package/plunger)
+[![npm version](https://badgen.net/npm/v/plunger)](https://www.npmjs.com/package/plunger)
 [![codecov](https://codecov.io/gh/geodatagouv/plunger/branch/master/graph/badge.svg)](https://codecov.io/gh/geodatagouv/plunger)
-[![dependencies Status](https://david-dm.org/geodatagouv/plunger/status.svg)](https://david-dm.org/geodatagouv/plunger)
+[![dependencies Status](https://badgen.net/david/dep/geodatagouv/plunger)](https://david-dm.org/geodatagouv/plunger)
 [![Known Vulnerabilities](https://snyk.io/test/github/geodatagouv/plunger/badge.svg?targetFile=package.json)](https://snyk.io/test/github/geodatagouv/plunger?targetFile=package.json)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+[![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 
 > Powerful link analyzer
 
