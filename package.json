@@ -10,7 +10,6 @@
   "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
   "license": "MIT",
   "scripts": {
-    "lint": "xo",
     "test": "nyc ava"
   },
   "files": [
@@ -62,8 +61,7 @@
       "lib"
     ],
     "reporter": [
-      "html",
-      "json",
+      "lcov",
       "text-summary"
     ]
   },
