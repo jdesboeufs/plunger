@@ -15,7 +15,7 @@ describe('path.analyzers.archive', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeArchive(token)
 
@@ -29,7 +29,7 @@ describe('path.analyzers.archive', () => {
         {ext: 'txt', mime: 'text/plain'}
       ]
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeArchive(token)
 

@@ -17,7 +17,7 @@ describe('http.analyzers.atom', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeAtom(token)
 

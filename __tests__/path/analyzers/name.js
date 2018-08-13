@@ -5,7 +5,7 @@ describe('path.analyzers.name', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = analyzeName(token)
 

@@ -64,7 +64,7 @@ describe('http.fetch', () => {
     const token = {url: location}
     const lastModified = 'Mon, 01 May 2017 22:00:00 GMT'
 
-    await fetch(token, Object.assign({lastModified}, options))
+    await fetch(token, {lastModified, ...options})
 
     expect(token.response.req.getHeader('if-modified-since')).toBe(lastModified)
   })
@@ -74,7 +74,7 @@ describe('http.fetch', () => {
     const token = {url: location}
     const lastModified = new Date(2017, 4, 2)
 
-    await fetch(token, Object.assign({lastModified}, options))
+    await fetch(token, {lastModified, ...options})
 
     expect(token.response.req.getHeader('if-modified-since')).toBe(lastModified.toUTCString())
   })
@@ -84,7 +84,7 @@ describe('http.fetch', () => {
     const token = {url: location}
     const etag = '"cool-etag"'
 
-    await fetch(token, Object.assign({etag}, options))
+    await fetch(token, {etag, ...options})
 
     expect(token.response.req.getHeader('if-none-match')).toBe(etag)
   })
@@ -94,7 +94,7 @@ describe('http.fetch', () => {
     const token = {url: location}
     const etag = '"cool-etag-gzip"'
 
-    await fetch(token, Object.assign({etag}, options))
+    await fetch(token, {etag, ...options})
 
     expect(token.response.req.getHeader('if-none-match')).toBe('"cool-etag-gzip","cool-etag"')
   })

@@ -6,7 +6,7 @@ describe('path.analyzers.file', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeTypes(token)
 

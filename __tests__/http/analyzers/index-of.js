@@ -20,7 +20,7 @@ describe('http.analyzers.index-of', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeIndexOf(token)
 
