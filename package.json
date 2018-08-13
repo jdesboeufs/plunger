@@ -10,7 +10,7 @@
   "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
   "license": "MIT",
   "scripts": {
-    "test": "nyc ava"
+    "test": "jest --detectOpenHandles"
   },
   "files": [
     "bin/",
@@ -39,10 +39,10 @@
     "type-is": "^1.6.16"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
     "codecov": "^3.0.0",
     "finalhandler": "^1.1.1",
-    "nyc": "^12.0.2",
+    "jest": "^23.5.0",
+    "jest-junit": "^5.1.0",
     "serve-static": "^1.13.2",
     "test-listen": "^1.1.0",
     "xo": "^0.21.1"
@@ -50,23 +50,42 @@
   "engines": {
     "node": ">=8.x"
   },
-  "ava": {
-    "files": [
-      "tests/**/*.test.js"
-    ]
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "lib"
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__helpers__/",
+      "/__fixtures__/"
     ],
-    "reporter": [
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "output": "reports/tests/junit.xml"
+        }
+      ]
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "lib/**/*.js",
+      "index.js"
+    ],
+    "coverageReporters": [
       "lcov",
       "text-summary"
-    ]
+    ],
+    "forceExit": true
   },
   "xo": {
     "semicolon": false,
-    "space": 2
+    "space": 2,
+    "overrides": [
+      {
+        "files": "__tests__/**/*.js",
+        "env": [
+          "jest"
+        ]
+      }
+    ]
   }
 }
