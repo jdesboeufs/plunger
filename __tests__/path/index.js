@@ -15,7 +15,7 @@ describe('path', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzePath(token)
 

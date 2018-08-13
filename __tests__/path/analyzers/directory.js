@@ -6,7 +6,7 @@ describe('path.analyzers.directory', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeDirectory(token)
 

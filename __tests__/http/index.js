@@ -21,7 +21,7 @@ describe('http', () => {
     const token = {
       analyzed: true
     }
-    const save = Object.assign({}, token)
+    const save = {...token}
 
     const ret = await analyzeUrl(token)
 
@@ -69,13 +69,11 @@ describe('http', () => {
 
     const token = {url}
 
-    await analyzeUrl(token, Object.assign({}, options, {
-      cache: {
-        getUrlCache: token => {
-          token.hacked = true
-        }
+    await analyzeUrl(token, {...options, cache: {
+      getUrlCache: token => {
+        token.hacked = true
       }
-    }))
+    }})
 
     expect(token.hacked).toBeTruthy()
 
@@ -87,13 +85,11 @@ describe('http', () => {
 
     const token = {url}
 
-    await analyzeUrl(token, Object.assign({}, options, {
-      cache: {
-        setUrlCache: token => {
-          token.hacked = true
-        }
+    await analyzeUrl(token, {...options, cache: {
+      setUrlCache: token => {
+        token.hacked = true
       }
-    }))
+    }})
 
     expect(token.hacked).toBeTruthy()
 
