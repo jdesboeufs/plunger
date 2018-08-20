@@ -34,7 +34,7 @@ describe('http.fetch', () => {
 
     await fetch(token, options)
 
-    expect(token.finalUrl).toBe(location)
+    expect(token.finalUrl).toBe(location + '/')
   })
 
   it('should process URL redirections and set them to the token', async () => {
@@ -117,7 +117,7 @@ describe('http.fetch', () => {
       unchanged: true,
       statusCode: 304,
       url: location,
-      finalUrl: location,
+      finalUrl: location + '/',
       redirectUrls: []
     })
   })
@@ -126,6 +126,6 @@ describe('http.fetch', () => {
     const location = await serveEmpty(400)
     const token = {url: location}
 
-    return expect(fetch(token, options)).rejects.toThrow('An invalid HTTP code was returned: 400')
+    return expect(fetch(token, options)).rejects.toThrow('Response code 400 (Bad Request)')
   })
 })

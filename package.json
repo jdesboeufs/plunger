@@ -28,6 +28,7 @@
     "feedparser": "^2.2.9",
     "file-type": "^9.0.0",
     "get-stream": "^3.0.0",
+    "got": "^9.0.0",
     "hasha": "^3.0.0",
     "htmlparser2": "^3.9.2",
     "mime-types": "^2.1.18",
@@ -51,6 +52,7 @@
     "node": ">=8.x"
   },
   "jest": {
+    "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__helpers__/",
