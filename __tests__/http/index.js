@@ -13,7 +13,8 @@ const options = {
   logger: {
     log: () => {}
   },
-  timeout: {}
+  timeout: {},
+  maxDownloadSize: 100 * 1024 * 1024
 }
 
 describe('http', () => {
@@ -56,7 +57,7 @@ describe('http', () => {
         mime: 'text/html',
         source: 'http:content-type'
       }],
-      finalUrl: url,
+      finalUrl: url + '/',
       redirectUrls: [],
       statusCode: 200,
       type: 'index-of',
