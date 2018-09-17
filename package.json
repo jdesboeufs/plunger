@@ -22,7 +22,7 @@
     "chalk": "^2.3.2",
     "content-disposition": "^0.5.2",
     "content-type": "^1.0.2",
-    "debug": "^3.1.0",
+    "debug": "^4.0.1",
     "execa": "^1.0.0",
     "feedparser": "^2.2.9",
     "file-type": "^9.0.0",
