@@ -13,7 +13,6 @@
     "test": "jest --detectOpenHandles"
   },
   "files": [
-    "bin/",
     "lib/",
     "index.js"
   ],
