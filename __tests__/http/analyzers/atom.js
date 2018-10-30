@@ -87,6 +87,33 @@ describe('http.analyzers.atom', () => {
     ])
   })
 
+  it('should support various content types', async () => {
+    const url = await serveFile(path.resolve(__dirname, '../../__fixtures__/atom-empty.xml'))
+
+    const contentTypes = [
+      'text/xml',
+      'application/xml'
+    ]
+
+    await Promise.all(
+      contentTypes.map(async ct => {
+        const token = {
+          url,
+          fileTypes: [
+            {mime: ct}
+          ]
+        }
+
+        await fetch(token, options)
+        await analyzeAtom(token, options)
+
+        expect(token.analyzed).toBeTruthy()
+        expect(token.type).toBe('atom')
+        expect(token.children).toHaveLength(0)
+      })
+    )
+  })
+
   it('should not extract any child for an empty atom feed', async () => {
     const url = await serveFile(path.resolve(__dirname, '../../__fixtures__/atom-empty.xml'))
 
@@ -102,10 +129,10 @@ describe('http.analyzers.atom', () => {
 
     expect(token.analyzed).toBeTruthy()
     expect(token.type).toBe('atom')
-    expect(token.children).toBeUndefined()
+    expect(token.children).toHaveLength(0)
   })
 
-  it('should fail for non atom feeds', async () => {
+  it('should not analyze non atom feeds', async () => {
     const url = await serveFile(path.resolve(__dirname, '../../__fixtures__/file.txt'))
 
     const token = {
@@ -116,7 +143,8 @@ describe('http.analyzers.atom', () => {
     }
 
     await fetch(token, options)
+    await analyzeAtom(token, options)
 
-    return expect(analyzeAtom(token, options)).rejects.toThrow('Not a feed')
+    return expect(token.analyzed).toBeFalsy()
   })
 })
