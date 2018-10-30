@@ -3,7 +3,6 @@
 [![npm version](https://badgen.net/npm/v/plunger)](https://www.npmjs.com/package/plunger)
 [![codecov](https://badgen.net/codecov/c/github/geodatagouv/plunger)](https://codecov.io/gh/geodatagouv/plunger)
 [![dependencies Status](https://badgen.net/david/dep/geodatagouv/plunger)](https://david-dm.org/geodatagouv/plunger)
-[![Known Vulnerabilities](https://snyk.io/test/github/geodatagouv/plunger/badge.svg?targetFile=package.json)](https://snyk.io/test/github/geodatagouv/plunger?targetFile=package.json)
 [![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 
 > Powerful link analyzer
