@@ -41,7 +41,7 @@
     "codecov": "^3.0.0",
     "finalhandler": "^1.1.1",
     "jest": "^23.5.0",
-    "jest-junit": "^5.1.0",
+    "jest-junit": "^6.0.1",
     "serve-static": "^1.13.2",
     "test-listen": "^1.1.0",
     "xo": "^0.23.0"
