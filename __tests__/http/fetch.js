@@ -43,7 +43,7 @@ describe('http.fetch', () => {
     const token = {url: first}
 
     await fetch(token, options)
-    const resolvedFinal = url.resolve(first, final)
+    const resolvedFinal = url.resolve(first, final) // eslint-disable-line node/no-deprecated-api
 
     expect(token.url).toBe(first)
     expect(token.finalUrl).toBe(resolvedFinal)
