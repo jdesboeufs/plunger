@@ -30,7 +30,7 @@
     "htmlparser2": "^3.9.2",
     "lerna-changelog": "^0.8.2",
     "mime-types": "^2.1.18",
-    "mississippi": "^3.0.0",
+    "mississippi": "^4.0.0",
     "normalize-url": "^4.0.0",
     "read-chunk": "^3.0.0",
     "rfc2047": "^2.0.1",
