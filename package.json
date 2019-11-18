@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "bluebird": "^3.5.1",
-    "chalk": "^2.3.2",
+    "chalk": "^3.0.0",
     "content-disposition": "^0.5.2",
     "content-type": "^1.0.2",
     "debug": "^4.0.1",
