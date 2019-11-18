@@ -24,7 +24,7 @@
     "debug": "^4.0.1",
     "execa": "^1.0.0",
     "feedparser": "^2.2.9",
-    "file-type": "^10.2.0",
+    "file-type": "^12.4.0",
     "got": "^9.3.0",
     "hasha": "^3.0.0",
     "htmlparser2": "^3.9.2",
