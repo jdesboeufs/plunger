@@ -17,7 +17,7 @@
     "bluebird": "^3.7.2",
     "chalk": "^2.3.2",
     "content-disposition": "^0.5.2",
-    "content-type": "^1.0.2",
+    "content-type": "^1.0.5",
     "debug": "^4.0.1",
     "execa": "^1.0.0",
     "feedparser": "^2.2.9",
