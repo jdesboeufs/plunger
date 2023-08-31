@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('node:path')
 const analyzeTypes = require('../../../lib/path/analyzers/types')
 
 describe('path.analyzers.file', () => {

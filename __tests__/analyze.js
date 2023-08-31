@@ -1,7 +1,6 @@
-const path = require('path')
+const path = require('node:path')
 const analyze = require('../lib/analyze')
 const options = require('../lib/options')
-
 const {serveFile} = require('./__helpers__/server')
 
 describe('analyze', () => {

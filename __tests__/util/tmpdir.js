@@ -1,5 +1,5 @@
-const os = require('os')
-const path = require('path')
+const os = require('node:os')
+const path = require('node:path')
 const tmpdir = require('../../lib/util/tmpdir')
 const rm = require('../__helpers__/rm')
 

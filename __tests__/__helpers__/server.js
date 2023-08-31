@@ -1,5 +1,5 @@
-const http = require('http')
-const path = require('path')
+const http = require('node:http')
+const path = require('node:path')
 const listen = require('test-listen')
 const serveStatic = require('serve-static')
 const finalhandler = require('finalhandler')

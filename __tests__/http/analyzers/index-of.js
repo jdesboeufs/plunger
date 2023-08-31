@@ -1,7 +1,6 @@
-const path = require('path')
+const path = require('node:path')
 const analyzeIndexOf = require('../../../lib/http/analyzers/index-of')
 const fetch = require('../../../lib/http/fetch')
-
 const {serveFile} = require('../../__helpers__/server')
 
 const options = {
@@ -10,7 +9,7 @@ const options = {
     /Index of/
   ],
   logger: {
-    log: () => {}
+    log() {}
   },
   timeout: {}
 }

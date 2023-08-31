@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('node:path')
 const {isArchive, unarchive} = require('../../lib/util/archive')
 const {createTempDirectory} = require('../../lib/util/tmpdir')
 const rm = require('../__helpers__/rm')
@@ -17,8 +17,7 @@ describe('util.archive', () => {
   })
 
   it('should return false if there are no valid types', () => {
-    const types = [{
-    }]
+    const types = [{}]
 
     expect(isArchive(types)).toBeFalsy()
   })
@@ -31,17 +30,13 @@ describe('util.archive', () => {
     expect(isArchive(types)).toBeTruthy()
   })
 
-  it('should error when trying to unarchive a file that does not exist', () => {
-    return expect(
-      unarchive(path.resolve(__dirname, '../__fixtures__/doesnt-exist'))
-    ).rejects.toThrow('Could not extract archive')
-  })
+  it('should error when trying to unarchive a file that does not exist', () => expect(
+    unarchive(path.resolve(__dirname, '../__fixtures__/doesnt-exist'))
+  ).rejects.toThrow('Could not extract archive'))
 
-  it('should error when trying to unarchive an invalid archive', () => {
-    return expect(
-      unarchive(path.resolve(__dirname, '../__fixtures__/file.txt'))
-    ).rejects.toThrow('Could not extract archive')
-  })
+  it('should error when trying to unarchive an invalid archive', () => expect(
+    unarchive(path.resolve(__dirname, '../__fixtures__/file.txt'))
+  ).rejects.toThrow('Could not extract archive'))
 
   it('should extract an archive and return the unarchived path', async () => {
     const tmp = await unarchive(path.resolve(__dirname, '../__fixtures__/file.zip'))

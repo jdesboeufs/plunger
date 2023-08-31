@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('node:path')
 const analyzeDirectory = require('../../../lib/path/analyzers/directory')
 
 describe('path.analyzers.directory', () => {

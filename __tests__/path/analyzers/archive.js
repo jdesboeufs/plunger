@@ -1,11 +1,11 @@
-const path = require('path')
+const path = require('node:path')
 const analyzeArchive = require('../../../lib/path/analyzers/archive')
 const {createTempDirectory} = require('../../../lib/util/tmpdir')
 const rm = require('../../__helpers__/rm')
 
 const options = {
   logger: {
-    log: () => {}
+    log() {}
   },
   extractArchives: true
 }

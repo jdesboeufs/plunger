@@ -1,7 +1,6 @@
-const path = require('path')
-const url = require('url')
+const path = require('node:path')
+const url = require('node:url')
 const fetch = require('../../lib/http/fetch')
-
 const {serveFile, serveEmpty, serveRedirect} = require('../__helpers__/server')
 
 const options = {

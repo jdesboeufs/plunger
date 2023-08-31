@@ -1,6 +1,5 @@
-const path = require('path')
+const path = require('node:path')
 const analyzeUrl = require('../../lib/http')
-
 const {serveFile} = require('../__helpers__/server')
 const rm = require('../__helpers__/rm')
 
@@ -11,7 +10,7 @@ const options = {
     /Index of/
   ],
   logger: {
-    log: () => {}
+    log() {}
   },
   timeout: {},
   maxDownloadSize: 100 * 1024 * 1024
@@ -71,7 +70,7 @@ describe('http', () => {
     const token = {url}
 
     await analyzeUrl(token, {...options, cache: {
-      getUrlCache: token => {
+      getUrlCache(token) {
         token.hacked = true
       }
     }})
@@ -87,7 +86,7 @@ describe('http', () => {
     const token = {url}
 
     await analyzeUrl(token, {...options, cache: {
-      setUrlCache: token => {
+      setUrlCache(token) {
         token.hacked = true
       }
     }})

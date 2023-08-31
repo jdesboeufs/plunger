@@ -1,13 +1,12 @@
-const path = require('path')
+const path = require('node:path')
 const analyzeAtom = require('../../../lib/http/analyzers/atom')
 const fetch = require('../../../lib/http/fetch')
-
 const {serveFile} = require('../../__helpers__/server')
 
 const options = {
   userAgent: 'plunger/test',
   logger: {
-    log: () => {}
+    log() {}
   },
   timeout: {}
 }

@@ -1,11 +1,11 @@
-const path = require('path')
+const path = require('node:path')
 const analyzePath = require('../../lib/path')
 const rm = require('../__helpers__/rm')
 
 const options = {
   digestAlgorithm: 'md5',
   logger: {
-    log: () => {}
+    log() {}
   },
   extractArchives: true
 }
