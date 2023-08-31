@@ -51,6 +51,7 @@ describe('http', () => {
       etag: token.etag,
       lastModified: token.lastModified,
       cacheControl: token.cacheControl,
+      fileSize: 97,
       fileTypes: [{
         ext: 'html',
         mime: 'text/html',

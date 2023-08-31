@@ -109,6 +109,7 @@ describe('analyze', () => {
       etag: token.etag,
       lastModified: token.lastModified,
       cacheControl: token.cacheControl,
+      fileSize: 28,
       children: [],
       fileTypes: [{
         ext: 'html',
