@@ -38,7 +38,7 @@
     "jest-junit": "^16.0.0",
     "serve-static": "^1.15.0",
     "test-listen": "^1.1.0",
-    "xo": "^0.23.0"
+    "xo": "^0.56.0"
   },
   "engines": {
     "node": ">=18.x"
@@ -73,6 +73,17 @@
   "xo": {
     "semicolon": false,
     "space": 2,
+    "rules": {
+      "unicorn/prefer-module": "off",
+      "import/extensions": "off",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "unicorn/prevent-abbreviations": "off",
+      "unicorn/prefer-number-properties": "warn",
+      "n/no-deprecated-api": "warn"
+    },
     "overrides": [
       {
         "files": "__tests__/**/*.js",
