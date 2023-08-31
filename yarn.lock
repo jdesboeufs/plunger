@@ -4707,10 +4707,10 @@ ret@~0.1.10:
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
   integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
 
-rfc2047@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/rfc2047/-/rfc2047-2.0.1.tgz#1a659b91585c3757d535a59f9afef1ba532ae86b"
-  integrity sha1-GmWbkVhcN1fVNaWfmv7xulMq6Gs=
+rfc2047@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/rfc2047/-/rfc2047-4.0.1.tgz#4e1cc217654728f09bc818b53a67d1d9c9d5067c"
+  integrity sha512-x5zHBAZtSSZDuBNAqGEAVpsQFV+YUluIkMWVaYRMEeGoLPxNVMmg67TxRnXwmRmCB7QaneyrkWXeKqbjfcK6RA==
   dependencies:
     iconv-lite "0.4.5"
 

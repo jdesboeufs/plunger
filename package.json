@@ -29,7 +29,7 @@
     "mississippi": "^3.0.0",
     "normalize-url": "^6.1.0",
     "read-chunk": "^3.0.0",
-    "rfc2047": "^2.0.1",
+    "rfc2047": "^4.0.1",
     "rimraf": "^2.6.1",
     "type-is": "^1.6.16"
   },
