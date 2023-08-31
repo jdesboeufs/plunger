@@ -16,3 +16,5 @@ reports/
 # Changelog
 .changelog
 CHANGELOG.md
+
+junit.xml
