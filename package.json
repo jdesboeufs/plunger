@@ -31,7 +31,7 @@
     "read-chunk": "^3.0.0",
     "rfc2047": "^4.0.1",
     "rimraf": "^5.0.1",
-    "type-is": "^1.6.16"
+    "type-is": "^1.6.18"
   },
   "devDependencies": {
     "codecov": "^3.0.0",
