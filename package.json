@@ -18,7 +18,7 @@
     "chalk": "^2.3.2",
     "content-disposition": "^0.5.4",
     "content-type": "^1.0.5",
-    "debug": "^4.0.1",
+    "debug": "^4.3.4",
     "execa": "^1.0.0",
     "feedparser": "^2.2.9",
     "file-type": "^10.2.0",
