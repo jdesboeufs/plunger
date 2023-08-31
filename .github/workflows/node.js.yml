@@ -24,4 +24,5 @@ jobs:
           cache: "yarn"
       - run: yarn --frozen-lockfile
       - run: yarn xo
+      - run: sudo apt-get install -y unar
       - run: yarn test
