@@ -1,10 +1,8 @@
-# plunger [![CircleCI](https://circleci.com/gh/geodatagouv/plunger.svg?style=svg)](https://circleci.com/gh/geodatagouv/plunger)
+# plunger
 
 > Powerful link analyzer
 
 [![npm version](https://badgen.net/npm/v/plunger)](https://www.npmjs.com/package/plunger)
-[![codecov](https://badgen.net/codecov/c/github/geodatagouv/plunger)](https://codecov.io/gh/geodatagouv/plunger)
-[![dependencies Status](https://badgen.net/david/dep/geodatagouv/plunger)](https://david-dm.org/geodatagouv/plunger)
 [![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 
 `plunger` analyzes an URL or a local path and recursively builds a tree of the files it contains or links to. It can ignore files that haven’t changed since the last check, or depending on a specific Etag. All of it is configurable.
@@ -17,7 +15,7 @@ The analyzed files are downloaded to temporary locations on your system. It’s 
 
 ### Requirements
 
-* [Node.js](https://nodejs.org) >= 8.0
+* [Node.js](https://nodejs.org) >= 18.0
 * [unar](https://theunarchiver.com/command-line)
 
 
